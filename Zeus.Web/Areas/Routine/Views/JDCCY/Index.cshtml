@@ -1,0 +1,218 @@
+﻿@{
+    ViewBag.Title = "机动车查验信息录入";
+    var X = Html.X();
+}
+@section header{
+    <script type="text/javascript">
+        var OpenNewWindows = function () {
+            var TempID = App.GP_Main.getSelectionModel().getSelection()[0].data.F_Id;
+            var TempUrl = 'http://192.168.8.177/Config/WebPrint.aspx?ID=' + TempID;
+            window.parent.open(TempUrl)
+        };
+        var SelectedRecord = function (e, row) {
+            if (row[0]) {
+                this.up('form').getForm().reset();
+                this.up('form').getForm().loadRecord(row[0]);
+                App.W_Main.show();
+            }
+        };
+    </script>
+}
+@(X.Viewport().Layout(LayoutType.Border).Items(
+    X.GridPanel().ID("GP_Main").Region(Region.Center).StyleSpec("border:1px solid #DFDFDF;")
+        .Store(X.Store().ID("S_Main").Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
+        .Reader(X.JsonReader().RootProperty("data").TotalProperty("total"))))
+        .ColumnModel(
+        X.RowNumbererColumn().Text("行号").MenuDisabled(true).Width(70),
+        X.Column().Text("基础数据").MenuDisabled(true).Columns(
+            X.Column().Text("识别代码").DataIndex("识别代码").Filter(X.StringFilter()).MenuDisabled(true).Width(160),
+            X.Column().Text("号牌类型").DataIndex("号牌类型").MenuDisabled(true),
+            X.Column().Text("使用性质").DataIndex("使用性质").MenuDisabled(true).Width(120),
+            X.Column().Text("车身颜色").DataIndex("车身颜色").MenuDisabled(true).Width(120),
+            X.Column().Text("核载人数").DataIndex("核载人数").MenuDisabled(true).Width(120),
+            X.DateColumn().Text("录入时间").DataIndex("添加时间").Format("yyyy-MM-dd HH:mm:ss").Width(160),
+            X.Column().Text("录入人").DataIndex("添加人").MenuDisabled(true)
+            ),
+        X.Column().Text("业务类型").MenuDisabled(true).Columns(
+            X.Column().Text("注册登记").DataIndex("注册登记").MenuDisabled(true),
+            X.Column().Text("转入").DataIndex("转入").MenuDisabled(true),
+            X.Column().Text("转移登记").DataIndex("转移登记").MenuDisabled(true),
+            X.Column().Text("变更迁出").DataIndex("变更迁出").MenuDisabled(true),
+            X.Column().Text("变更车身颜色").DataIndex("变更车身颜色").MenuDisabled(true),
+            X.Column().Text("变更车身或车架").DataIndex("变更车身或车架").MenuDisabled(true).Width(120),
+            X.Column().Text("变更发动机").DataIndex("变更发动机").MenuDisabled(true),
+            X.Column().Text("变更使用性质").DataIndex("变更使用性质").MenuDisabled(true),
+            X.Column().Text("重新打刻VIN").DataIndex("重新打刻VIN").MenuDisabled(true),
+            X.Column().Text("重新打刻发动机号").DataIndex("重新打刻发动机号").MenuDisabled(true).Width(130),
+            X.Column().Text("加装拆除操纵辅助装置").DataIndex("加装拆除操纵辅助装置").MenuDisabled(true).Width(160),
+            X.Column().Text("更换整车").DataIndex("更换整车").MenuDisabled(true),
+            X.Column().Text("申领登记证书").DataIndex("申领登记证书").MenuDisabled(true),
+            X.Column().Text("补领登记证书").DataIndex("补领登记证书").MenuDisabled(true),
+            X.Column().Text("监销").DataIndex("监销").MenuDisabled(true),
+            X.Column().Text("其他").DataIndex("其他").MenuDisabled(true)
+            ),
+        X.Column().Text("检测项目").MenuDisabled(true).Columns(
+            X.Column().Text("车辆识别代号").DataIndex("车辆识别代号").MenuDisabled(true),
+            X.Column().Text("发动机型号号码").DataIndex("发动机型号号码").MenuDisabled(true).Width(120),
+            X.Column().Text("车身品牌型号").DataIndex("车身品牌型号").MenuDisabled(true),
+            X.Column().Text("车辆类型").DataIndex("车辆类型").MenuDisabled(true),
+            X.Column().Text("号牌车辆外观形状").DataIndex("号牌车辆外观形状").MenuDisabled(true).Width(130),
+            X.Column().Text("轮胎完好情况").DataIndex("轮胎完好情况").MenuDisabled(true),
+            X.Column().Text("安全带三角警告牌").DataIndex("安全带三角警告牌").MenuDisabled(true).Width(130),
+            X.Column().Text("外廊尺寸轴数").DataIndex("外廊尺寸轴数").MenuDisabled(true),
+            X.Column().Text("整备质量").DataIndex("整备质量").MenuDisabled(true),
+            X.Column().Text("轮胎规格").DataIndex("轮胎规格").MenuDisabled(true),
+            X.Column().Text("侧后部防护装置").DataIndex("侧后部防护装置").MenuDisabled(true).Width(130),
+            X.Column().Text("车身反光标识").DataIndex("车身反光标识").MenuDisabled(true),
+            X.Column().Text("灭火器").DataIndex("灭火器").MenuDisabled(true),
+            X.Column().Text("行驶记录装置").DataIndex("行驶记录装置").MenuDisabled(true),
+            X.Column().Text("应急出口应急锤乘客门").DataIndex("应急出口应急锤乘客门").MenuDisabled(true).Width(160),
+            X.Column().Text("外部标识文字喷涂").DataIndex("外部标识文字喷涂").MenuDisabled(true).Width(130),
+            X.Column().Text("标志灯具警报器").DataIndex("标志灯具警报器").MenuDisabled(true).Width(130),
+            X.Column().Text("检验合格证明").DataIndex("检验合格证明").MenuDisabled(true).Width(130)
+            ))
+        .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
+        .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询"))
+        .Listeners(l => l.CellDblClick.Fn = "SelectedRecord")
+        //.Listeners(ls => ls.CellDblClick.Handler = "GPEdit();")
+        .TopBar(X.Toolbar().Items(
+            X.Button().Text("新增").Icon(Icon.Add).Width(80)
+            .Listeners(ls => { ls.Click.Handler = "#{W_Main}.show();"; ls.Click.Buffer = 250; }),
+            X.Button().Text("打印").Icon(Icon.Printer).Width(80)
+            .Listeners(ls =>
+            {
+                ls.Click.Handler = @"if (!#{GP_Main}.getSelectionModel().hasSelection()) 
+                { 
+                    X.Msg.show({ title: '操作提示', icon: X.MessageBox.ERROR, msg:'请选中要操作的数据！', buttons: X.Msg.OK });return false; 
+                }
+                else
+                {
+                    OpenNewWindows(#{GP_Main}.getSelectionModel().getSelection()[0].data.F_Id);
+                }";
+            }),
+            X.Button().ID("B_Delete").Text("删除").Width(80).Icon(Icon.Delete).DirectEvents(B_Delete =>
+            {
+                B_Delete.Click.Url = Url.Action("DeleteSingle");
+                B_Delete.Click.ExtraParams.Add(
+                    new Parameter
+                    {
+                        Name = "keyValue",
+                        Value = "#{GP_Main}.getSelectionModel().hasSelection() ? #{GP_Main}.getSelectionModel().getSelection()[0].data.F_Id : ''",
+                        Mode = ParameterMode.Raw
+                    });
+                B_Delete.Click.Before = @"if (!#{GP_Main}.getSelectionModel().hasSelection()) { X.Msg.show({ title: '操作提示', icon: X.MessageBox.ERROR, msg:'请选中要操作的数据！', buttons: X.Msg.OK });return false; }";
+                B_Delete.Click.Success = "App.GP_Left.store.reload();App.FP_Right.getForm().reset();";
+                B_Delete.Click.EventMask.ShowMask = true;
+                B_Delete.Click.EventMask.Msg = "处理中...";
+                B_Delete.Click.EventMask.MinDelay = 1000;
+                B_Delete.Click.Confirmation.ConfirmRequest = true;
+                B_Delete.Click.Confirmation.Title = "操作提示";
+                B_Delete.Click.Confirmation.Message = "是否确认删除选中数据？";
+            }),
+            X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Main}.reload();"))),
+    X.Window().ID("W_Main").Title("查验明细").Icon(Icon.Application).Width(1100).BodyStyle("background-color: #fff;")
+            .Modal(true).BodyPadding(5).Height(550).Hidden(true).AutoScroll(false).Layout(LayoutType.Border).Items(
+            X.FormPanel().ID("FP_Main").Border(false).Region(Region.Center).Items(
+            X.Hidden().ID("H_TempID"),
+            X.FieldContainer().ID("FC_Main").PaddingSpec("3").Layout(LayoutType.Column).Items(
+                X.FieldSet().ID("FS_CarInfo").Title("基本信息").Layout(LayoutType.Column).PaddingSpec("5").ColumnWidth(0.5).Height(220).Items(
+                    X.Panel().Layout(LayoutType.Column).Items(
+                        X.TextField().ID("TF_CarNumber").FieldLabel("识别代码").Name("识别代码").LabelWidth(60).LabelAlign(LabelAlign.Right)
+                        .AutoFocus(true).MaxLength(17).MinLength(17).AllowBlank(false),
+                        X.ComboBox().ID("CB_NumberType").FieldLabel("号牌类型").Name("号牌类型").LabelWidth(60).LabelAlign(LabelAlign.Right)
+                        .Text("蓝牌").AllowBlank(false).Items(
+                            X.ListItem().Text("黄牌"),
+                            X.ListItem().Text("蓝牌"))),
+                    X.Panel().Layout(LayoutType.Column).StyleSpec("margin-top:10px;").Items(
+                        X.ComboBox().ID("CB_UserNature").FieldLabel("使用性质").Name("使用性质").LabelWidth(60).LabelAlign(LabelAlign.Right)
+                        .AllowBlank(false).Items(
+                            X.ListItem().Text("非营运"),
+                            X.ListItem().Text("营运"),
+                            X.ListItem().Text("货运"),
+                            X.ListItem().Text("危化品运输")),
+                        X.ComboBox().ID("CB_CarColor").FieldLabel("车身颜色").Name("车身颜色").LabelWidth(60).LabelAlign(LabelAlign.Right)
+                        .AllowBlank(false).Items(
+                            X.ListItem().Text("黑色"),
+                            X.ListItem().Text("红色"),
+                            X.ListItem().Text("黄色"),
+                            X.ListItem().Text("蓝色"),
+                            X.ListItem().Text("绿色"),
+                            X.ListItem().Text("灰色"),
+                            X.ListItem().Text("白色"),
+                            X.ListItem().Text("棕色"),
+                            X.ListItem().Text("粉色"),
+                            X.ListItem().Text("紫色"))),
+                    X.Panel().Layout(LayoutType.Column).StyleSpec("margin-top:10px;").Items(
+                        X.NumberField().ID("NF_ApprovedNumber").FieldLabel("核载人数").Name("核载人数").LabelWidth(60).LabelAlign(LabelAlign.Right)
+                        .AllowBlank(false).MinValue(0))),
+                X.FieldSet().ID("FS_ServiceType").Title("业务类型").PaddingSpec("5").ColumnWidth(0.5)
+                .StyleSpec("margin-left:5px;").Height(220).Items(
+                    X.CheckboxGroup().ID("CG1").Layout(LayoutType.HBox).Items(
+                        X.Checkbox().ID("C_ZCDJ").BoxLabel("注册登记").Name("注册登记").Width(100),
+                        X.Checkbox().ID("C_ZR").BoxLabel("转入").Name("转入").Width(80),
+                        X.Checkbox().ID("C_ZYDJ").BoxLabel("转移登记").Name("转移登记").Width(100),
+                        X.Checkbox().ID("C_BGQC").BoxLabel("变更迁出").Name("变更迁出").Width(100),
+                        X.Checkbox().ID("C_BGCSYS").BoxLabel("变更车身颜色").Name("变更车身颜色").Width(120)),
+                    X.CheckboxGroup().ID("CG2").Layout(LayoutType.HBox).StyleSpec("margin-top:25px;").Items(
+                        X.Checkbox().ID("C_BGCSHCJ").BoxLabel("变更车身或车架").Name("变更车身或车架").Width(130),
+                        X.Checkbox().ID("C_BGFDJ").BoxLabel("变更发动机").Name("变更发动机").Width(130),
+                        X.Checkbox().ID("C_BGSYXZ").BoxLabel("变更使用性质").Name("变更使用性质").Width(130),
+                        X.Checkbox().ID("C_CXDKVIN").BoxLabel("重新打刻VIN").Name("重新打刻VIN").Width(130)),
+                    X.CheckboxGroup().ID("CG3").Layout(LayoutType.HBox).StyleSpec("margin-top:20px;").Items(
+                        X.Checkbox().ID("C_CXDKVDJH").BoxLabel("重新打刻发动机号").Name("重新打刻发动机号").Width(150),
+                        X.Checkbox().ID("C_JZCCCZFZZZ").BoxLabel("加装/拆除操纵辅助装置").Name("加装拆除操纵辅助装置").Width(200),
+                        X.Checkbox().ID("C_GHZC").BoxLabel("更换整车").Name("更换整车").Width(100)),
+                    X.CheckboxGroup().ID("CG4").Layout(LayoutType.HBox).StyleSpec("margin-top:25px;").Items(
+                        X.Checkbox().ID("C_SLDJZS").BoxLabel("申领登记证书").Name("申领登记证书").Width(100),
+                        X.Checkbox().ID("C_BLDJZS").BoxLabel("补领登记证书").Name("补领登记证书").Width(80),
+                        X.Checkbox().ID("C_JX").BoxLabel("监销").Name("监销").Width(100),
+                        X.Checkbox().ID("C_QT").BoxLabel("其他").Name("其他").Width(100)))),
+            X.FieldContainer().ID("FC_CheckPro").PaddingSpec("3").Items(
+                X.FieldSet().ID("FS_CheckPro").Title("检测项目").PaddingSpec("7").Items(
+                    X.CheckboxGroup().ID("CG5").Layout(LayoutType.HBox).Items(
+                        X.Checkbox().ID("C_CLSBDH").BoxLabel("车辆识别代号").Name("车辆识别代号").Width(100),
+                        X.Checkbox().ID("C_FDJXHHM").BoxLabel("发动机型号/号码").Name("发动机型号号码").Width(100),
+                        X.Checkbox().ID("C_CSPPXH").BoxLabel("车身品牌/型号").Name("车身品牌型号").Width(100),
+                        X.Checkbox().ID("C_CLLX").BoxLabel("车辆类型").Name("车辆类型").Width(100),
+                        X.Checkbox().ID("C_HPCLWGXZ").BoxLabel("号牌/车辆外观形状").Name("号牌车辆外观形状").Width(100),
+                        X.Checkbox().ID("C_LTWHQK").BoxLabel("轮胎完好情况").Name("轮胎完好情况").Width(100)),
+                    X.CheckboxGroup().ID("CG6").Layout(LayoutType.HBox).StyleSpec("margin-top:20px;").Items(
+                        X.Checkbox().ID("C_AQDSJJGP").BoxLabel("安全带、三角警告牌").Name("安全带三角警告牌").Width(100),
+                        X.Checkbox().ID("C_WLCCZS").BoxLabel("外廊尺寸、轴数").Name("外廊尺寸轴数").Width(100),
+                        X.Checkbox().ID("C_ZBZL").BoxLabel("整备质量").Name("整备质量").Width(100),
+                        X.Checkbox().ID("C_LTGG").BoxLabel("轮胎规格").Name("轮胎规格").Width(100),
+                        X.Checkbox().ID("C_CHBFZZZ").BoxLabel("侧后部防护装置").Name("侧后部防护装置").Width(100),
+                        X.Checkbox().ID("C_CSFGBS").BoxLabel("车身反光标识").Name("车身反光标识").Width(100),
+                        X.Checkbox().ID("C_MHQ").BoxLabel("灭火器").Name("灭火器").Width(100)),
+                    X.CheckboxGroup().ID("CG7").Layout(LayoutType.HBox).StyleSpec("margin-top:20px;").Items(
+                        X.Checkbox().ID("C_XSJLZZ").BoxLabel("行驶记录装置、车内外录像监控装置").Name("行驶记录装置车内外录像监控装置").Width(100),
+                        X.Checkbox().ID("C_YJCK").BoxLabel("应急出口/应急锤、乘客门").Name("应急出口应急锤乘客门").Width(100),
+                        X.Checkbox().ID("C_QBBS").BoxLabel("外部标识/文字、喷涂").Name("外部标识文字喷涂").Width(100),
+                        X.Checkbox().ID("C_BZDJ").BoxLabel("标志灯具、警报器").Name("标志灯具警报器").Width(100),
+                        X.Checkbox().ID("C_JYHGZM").BoxLabel("检验合格证明").Name("检验合格证明").Width(100)))))
+            .TopBar(X.Toolbar().Items(
+                X.Button().ID("B_Save").Text("保存").Icon(Icon.Disk).DirectEvents(B_Save =>
+                {
+                    B_Save.Click.Url = Url.Action("SaveSingle");
+                    B_Save.Click.ExtraParams.Add(
+                    new Parameter
+                    {
+                        Name = "jdccyEntity",
+                        Value = "Ext.encode(#{FP_Main}.getForm().getValues())",
+                        Mode = ParameterMode.Raw
+                    });
+                    B_Save.Click.ExtraParams.Add(
+                    new Parameter
+                    {
+                        Name = "keyValue",
+                        Value = "#{GP_Main}.getSelectionModel().hasSelection() ? #{GP_Main}.getSelectionModel().getSelection()[0].data.F_Id : ''",
+                        Mode = ParameterMode.Raw
+                    });
+                    B_Save.Click.Before = @"if (!#{FP_Main}.getForm().isValid()) { return false; }";
+                    B_Save.Click.Success = "#{GP_Main}.store.reload();#{FP_Main}.getForm().reset();#{GP_Main}.getSelectionModel().clearSelections();";
+                    B_Save.Click.EventMask.ShowMask = true;
+                    B_Save.Click.EventMask.Msg = "处理中...";
+                }),
+                X.Button().ID("B_Clear").Text("清空输入").Icon(Icon.Cancel).OnClientClick("#{FP_Main}.reset();")
+            )))
+            .Listeners(ls => { ls.BeforeShow.Handler = "#{FP_Main}.getForm().reset();"; })))
