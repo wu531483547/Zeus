@@ -258,7 +258,6 @@ $.deleteForm = function (options) {
             }, 500);
         }
     });
-
 }
 $.jsonWhere = function (data, action) {
     if (action == null) return;

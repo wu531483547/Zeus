@@ -24,12 +24,14 @@
 *****************************************************************************/
 #endregion
 
-using System.Collections.Generic;
-using System.Linq;
-using Zeus.Model;
-using Zeus.IRepository.Routine;
-using Zeus.Repository.Routine;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using Zeus.Core;
+using Zeus.IRepository.Routine;
+using Zeus.Model;
+using Zeus.Repository.Routine;
 
 namespace Zeus.Application.Routine
 {
@@ -37,9 +39,11 @@ namespace Zeus.Application.Routine
     {
         private ICarCheckRepository service = new CarCheckRepository();
 
-        public List<A_CarCheck> GetList()
+        public List<A_CarCheck> GetList(DateTime? BeginTime, DateTime? EndTime)
         {
-            return service.IQueryable().OrderBy(t => t.F_CreatorTime).ToList();
+            return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime)>= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= BeginTime
+            ).OrderBy(t => t.F_CreatorTime).ToList();
         }
         public A_CarCheck GetSingle(string keyValue)
         {
@@ -49,7 +53,7 @@ namespace Zeus.Application.Routine
         {
             service.Delete(t => t.F_Id == keyValue);
         }
-        public void SubmitSingle(Dictionary<string,string> carcheckDic, string keyValue)
+        public void SubmitSingle(Dictionary<string, string> carcheckDic, string keyValue)
         {
             A_CarCheck carcheckEntity = new A_CarCheck();
             carcheckEntity.F_Id = keyValue;
@@ -72,7 +76,7 @@ namespace Zeus.Application.Routine
             if (carcheckDic.ContainsKey("F_5"))
             {
                 carcheckEntity.F_5 = carcheckDic["F_5"].Trim();
-            }            
+            }
             if (carcheckDic.ContainsKey("F_6"))
             {
                 carcheckEntity.F_6 = true;

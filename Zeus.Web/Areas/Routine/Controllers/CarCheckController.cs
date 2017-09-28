@@ -1,9 +1,9 @@
 ﻿using Ext.Net.MVC;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Zeus.Application.Routine;
-using Zeus.Model;
 
 namespace Zeus.Web.Areas.Routine.Controllers
 {
@@ -13,9 +13,9 @@ namespace Zeus.Web.Areas.Routine.Controllers
 
         [HttpGet]
         [HandlerAjaxOnly]
-        public StoreResult GetList()
+        public StoreResult GetList(DateTime? BeginTime,DateTime? EndTime)
         {
-            var data = carcheckApp.GetList();
+            var data = carcheckApp.GetList(BeginTime, EndTime);
             return this.Store(data, data.Count);
         }
 
@@ -28,7 +28,7 @@ namespace Zeus.Web.Areas.Routine.Controllers
             return Success("操作成功。");
         }
 
-        [HttpGet]
+        [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSingle(string keyValue)
