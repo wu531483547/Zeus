@@ -1,0 +1,105 @@
+﻿/*解决页面字体太小的问题*/
+.GridColumnRed {
+    background-color: #FFBBFF;
+}
+
+.PanelCls {
+    padding-left: 5px;
+}
+
+.EditoRowBgC {
+    background-color: #C1FFC1;
+}
+
+.x-grid-empty {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-cell-inner {
+     font-size: 14px !important;
+}
+
+.x-grid-row-over {
+    font-weight: bold;
+}
+
+.x-grid-inner {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-group-title {
+     font-size: 14px !important;
+    font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-rowbody {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-row-summary .x-grid-cell, .x-grid-row-summary .x-grid-rowwrap, .x-grid-row-summary .x-grid-cell-rowbody {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-editor {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-grid-row-editor .x-form-display-field {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-btn-inner {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-btn-group-header-text-container-default {
+     font-size: 14px !important;
+}
+
+.x-btn-group-header-text-container-default-framed {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-btn-default-medium .x-btn-inner {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-column-header {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-panel-header-text, .x-panel-header-default, .x-panel-body-default, .x-panel-header-text-container-default {
+    font-size: 14px !important;
+    font-family: 'Microsoft YaHei UI';
+}
+
+.x-menu-item, .x-menu-item-text, .x-menu-item-glyph {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-toolbar, .x-toolbar-text, .x-toolbar-item {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-form-text, .x-form-item, .x-form-field, .x-form-item-label, .x-form-invalid-under {
+     font-size: 14px !important;
+     font-family: 'Microsoft YaHei UI';
+}
+
+.x-form-item-label, .x-unselectable, .x-form-item-label-right, .x-component, .x-fieldset-header-text,
+.x-component-default, .x-form-cb-label, .x-form-cb-label-after {
+    font-size: 14px !important;
+    font-family: 'Microsoft YaHei UI';
+}
