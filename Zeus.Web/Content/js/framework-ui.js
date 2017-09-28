@@ -429,7 +429,6 @@ $.fn.dataGrid = function (options) {
     $element.jqGrid(options);
 };
 $.saveRecord = function (options) {
-    debugger
     var defaults = {
         url: "",
         param: [],
