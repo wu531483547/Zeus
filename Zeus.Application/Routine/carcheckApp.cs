@@ -49,15 +49,179 @@ namespace Zeus.Application.Routine
         {
             service.Delete(t => t.F_Id == keyValue);
         }
-        public void SubmitSingle(A_CarCheck jdccyEntity, string keyValue)
+        public void SubmitSingle(Dictionary<string,string> carcheckDic, string keyValue)
         {
+            A_CarCheck carcheckEntity = new A_CarCheck();
+            carcheckEntity.F_Id = keyValue;
+            if (carcheckDic.ContainsKey("F_1"))
+            {
+                carcheckEntity.F_1 = carcheckDic["F_1"].Trim();
+            }
+            if (carcheckDic.ContainsKey("F_2"))
+            {
+                carcheckEntity.F_2 = carcheckDic["F_2"].Trim();
+            }
+            if (carcheckDic.ContainsKey("F_3"))
+            {
+                carcheckEntity.F_3 = carcheckDic["F_3"].Trim();
+            }
+            if (carcheckDic.ContainsKey("F_4"))
+            {
+                carcheckEntity.F_4 = carcheckDic["F_4"].Trim();
+            }
+            if (carcheckDic.ContainsKey("F_5"))
+            {
+                carcheckEntity.F_5 = carcheckDic["F_5"].Trim();
+            }            
+            if (carcheckDic.ContainsKey("F_6"))
+            {
+                carcheckEntity.F_6 = true;
+            }
+            if (carcheckDic.ContainsKey("F_7"))
+            {
+                carcheckEntity.F_7 = true;
+            }
+            if (carcheckDic.ContainsKey("F_8"))
+            {
+                carcheckEntity.F_8 = true;
+            }
+            if (carcheckDic.ContainsKey("F_9"))
+            {
+                carcheckEntity.F_9 = true;
+            }
+            if (carcheckDic.ContainsKey("F_10"))
+            {
+                carcheckEntity.F_10 = true;
+            }
+            if (carcheckDic.ContainsKey("F_11"))
+            {
+                carcheckEntity.F_11 = true;
+            }
+            if (carcheckDic.ContainsKey("F_12"))
+            {
+                carcheckEntity.F_12 = true;
+            }
+            if (carcheckDic.ContainsKey("F_13"))
+            {
+                carcheckEntity.F_13 = true;
+            }
+            if (carcheckDic.ContainsKey("F_14"))
+            {
+                carcheckEntity.F_14 = true;
+            }
+            if (carcheckDic.ContainsKey("F_15"))
+            {
+                carcheckEntity.F_15 = true;
+            }
+            if (carcheckDic.ContainsKey("F_16"))
+            {
+                carcheckEntity.F_16 = true;
+            }
+            if (carcheckDic.ContainsKey("F_17"))
+            {
+                carcheckEntity.F_17 = true;
+            }
+            if (carcheckDic.ContainsKey("F_18"))
+            {
+                carcheckEntity.F_18 = true;
+            }
+            if (carcheckDic.ContainsKey("F_19"))
+            {
+                carcheckEntity.F_19 = true;
+            }
+            if (carcheckDic.ContainsKey("F_20"))
+            {
+                carcheckEntity.F_20 = true;
+            }
+            if (carcheckDic.ContainsKey("F_21"))
+            {
+                carcheckEntity.F_21 = true;
+            }
+            if (carcheckDic.ContainsKey("F_22"))
+            {
+                carcheckEntity.F_22 = true;
+            }
+            if (carcheckDic.ContainsKey("F_23"))
+            {
+                carcheckEntity.F_23 = true;
+            }
+            if (carcheckDic.ContainsKey("F_24"))
+            {
+                carcheckEntity.F_24 = true;
+            }
+            if (carcheckDic.ContainsKey("F_25"))
+            {
+                carcheckEntity.F_25 = true;
+            }
+            if (carcheckDic.ContainsKey("F_26"))
+            {
+                carcheckEntity.F_26 = true;
+            }
+            if (carcheckDic.ContainsKey("F_27"))
+            {
+                carcheckEntity.F_27 = true;
+            }
+            if (carcheckDic.ContainsKey("F_28"))
+            {
+                carcheckEntity.F_28 = true;
+            }
+            if (carcheckDic.ContainsKey("F_29"))
+            {
+                carcheckEntity.F_29 = true;
+            }
+            if (carcheckDic.ContainsKey("F_30"))
+            {
+                carcheckEntity.F_30 = true;
+            }
+            if (carcheckDic.ContainsKey("F_31"))
+            {
+                carcheckEntity.F_31 = true;
+            }
+            if (carcheckDic.ContainsKey("F_32"))
+            {
+                carcheckEntity.F_32 = true;
+            }
+            if (carcheckDic.ContainsKey("F_33"))
+            {
+                carcheckEntity.F_33 = true;
+            }
+            if (carcheckDic.ContainsKey("F_34"))
+            {
+                carcheckEntity.F_34 = true;
+            }
+            if (carcheckDic.ContainsKey("F_35"))
+            {
+                carcheckEntity.F_35 = true;
+            }
+            if (carcheckDic.ContainsKey("F_36"))
+            {
+                carcheckEntity.F_36 = true;
+            }
+            if (carcheckDic.ContainsKey("F_37"))
+            {
+                carcheckEntity.F_37 = true;
+            }
+            if (carcheckDic.ContainsKey("F_38"))
+            {
+                carcheckEntity.F_38 = true;
+            }
+            if (carcheckDic.ContainsKey("F_39"))
+            {
+                carcheckEntity.F_39 = true;
+            }
+            if (carcheckDic.ContainsKey("F_Remakes"))
+            {
+                carcheckEntity.F_Remakes = carcheckDic["F_Remakes"].Trim();
+            }
             if (!string.IsNullOrEmpty(keyValue))
             {
-                service.Update(jdccyEntity);
+                carcheckEntity.Modify(keyValue);
+                service.Update(carcheckEntity);
             }
             else
             {
-                service.Insert(jdccyEntity);
+                carcheckEntity.Create();
+                service.Insert(carcheckEntity);
             }
         }
     }

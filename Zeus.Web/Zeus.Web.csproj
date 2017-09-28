@@ -483,6 +483,12 @@
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Areas\Routine\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Routine\Views\CarCheck\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsData\Details.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsData\Form.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsData\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsType\Details.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsType\Form.cshtml" />
+    <Content Include="Areas\SystemManage\Views\ItemsType\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -493,8 +499,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Readme\" />
-    <Folder Include="Areas\SystemManage\Views\ItemsData\" />
-    <Folder Include="Areas\SystemManage\Views\ItemsType\" />
     <Folder Include="Resource\DbBackup\" />
   </ItemGroup>
   <ItemGroup>
@@ -514,6 +518,9 @@
       <Project>{962ef7e5-2f0c-4548-97f5-a9779b748549}</Project>
       <Name>Zeus.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

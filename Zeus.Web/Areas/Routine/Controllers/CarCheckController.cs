@@ -1,5 +1,5 @@
-﻿using Ext.Net;
-using Ext.Net.MVC;
+﻿using Ext.Net.MVC;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Zeus.Application.Routine;
@@ -22,11 +22,10 @@ namespace Zeus.Web.Areas.Routine.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveSingle(A_CarCheck fpValue, string keyValue)
+        public ActionResult SaveSingle(string fpValue, string keyValue)
         {
-            //carcheckApp.SubmitSingle(carcheckEntity, keyValue);
+            carcheckApp.SubmitSingle(JsonConvert.DeserializeObject<Dictionary<string, string>>(fpValue), keyValue);
             return Success("操作成功。");
-            //return DirectNotify();
         }
 
         [HttpGet]

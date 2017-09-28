@@ -12,37 +12,40 @@
         };
         var SaveRecord = function () {
             if (App.FP_Right.getForm().isValid()) {
-                $.saveRecord({
-                    url: "/Routine/CarCheck/SaveSingle",
-                    param: [Ext.encode(App.FP_Right.getForm().getValues()),
-                            App.GP_Left.getSelectionModel().hasSelection() ? App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id : ''],
-                    success: function () {
-                        App.FP_Right.getForm().reset();
-                        App.GP_Left.store.reload();
-                        App.GP_Left.getSelectionModel().clearSelections();
-                        App.GP_Left.getView().refresh();
-                    }
-                });
-
-                //$.ajax({
-                //    type: 'POST',
-                //    url: '/Routine/CarCheck/SaveSingle',
-                //    cache: false,
-                //    data: {
-                //        __RequestVerificationToken: token, $('[name=__RequestVerificationToken]').val()
-                //        fpValue: Ext.encode(App.FP_Right.getForm().getValues()),
-                //        keyValue: App.GP_Left.getSelectionModel().hasSelection() ? App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id : ''
-                //    },
-                //    success: function (data) {
-                //        App.FP_Right.getForm().reset();
-                //        App.GP_Left.store.reload();
-                //        App.GP_Left.getSelectionModel().clearSelections();
-                //        App.GP_Left.getView().refresh();
-                //    },
-                //    error: function () {
-                //        alert("Error")
-                //    }
-                //});
+                $.loading(true, "正在提交数据...");
+                window.setTimeout(function () {
+                    $.ajax({
+                        url: "/Routine/CarCheck/SaveSingle",
+                        loading: "正在提交数据...",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                            fpValue: Ext.encode(App.FP_Right.getForm().getValues()),
+                            keyValue: App.GP_Left.getSelectionModel().hasSelection() ?
+                                App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id : ''
+                        },
+                        success: function (result) {
+                            if (result.state == "success") {
+                                $.modalMsg(result.message, result.state);
+                                $.modalClose();
+                                App.FP_Right.getForm().reset();
+                                App.GP_Left.store.reload();
+                                App.GP_Left.getSelectionModel().clearSelections();
+                                App.GP_Left.getView().refresh();
+                            } else {
+                                $.modalAlert(result.message, result.state);
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            $.loading(false);
+                            $.modalMsg(errorThrown, "error");
+                        },
+                        complete: function () {
+                            $.loading(false);
+                        }
+                    });
+                }, 500);
             }
             else {
                 return false;
@@ -63,13 +66,15 @@
 }
 @(X.Viewport().Layout(LayoutType.Fit).Items(
     X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
-        X.GridPanel().ID("GP_Left").Region(Region.West).Width(350).StyleSpec("border:1px solid #DFDFDF;border-left:0px;border-right:0px;")
+        X.GridPanel().ID("GP_Left").Region(Region.West).Width(380).StyleSpec("border:1px solid #DFDFDF;border-left:0px;border-right:0px;")
         .Store(X.Store().ID("S_Left").Model(X.Model().IDProperty("ID").Fields(new ModelField("F_CreatorTime", ModelFieldType.Date)))
         .Proxy(X.AjaxProxy().Url(Url.Action("GetList")).Reader(X.JsonReader().RootProperty("data").TotalProperty("total"))))
         .ColumnModel(
             X.RowNumbererColumn().Align(Alignment.Center).Text("序号").Width(50),
-            X.Column().Text("识别代号").DataIndex("F_1").Filter(X.StringFilter().EmptyText("输入车辆识别代号")).Width(150),
-            X.DateColumn().Text("录入时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150))
+            X.Column().Text("识别代号").DataIndex("F_1").Filter(X.StringFilter().EmptyText("输入车辆识别代号"))
+            .MenuDisabled(true).Sortable(false).Width(180),
+            X.DateColumn().Text("录入时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150)
+            .MenuDisabled(true))
         .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
         .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询"))
         .Listeners(l => l.SelectionChange.Fn = "SelectedRecord"),
@@ -142,28 +147,6 @@
     .TopBar(X.Toolbar().Items(
         X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
         X.Button().ID("B_Save").Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
-        //.DirectEvents(B_Save =>
-        //{
-        //    B_Save.Click.Url = Url.Action("SaveSingle");
-        //    B_Save.Click.ExtraParams.Add(
-        //    new Parameter
-        //    {
-        //        Name = "fpValue",
-        //        Value = "Ext.encode(#{FP_Right}.getForm().getValues())",
-        //        Mode = ParameterMode.Raw
-        //    });
-        //    B_Save.Click.ExtraParams.Add(
-        //    new Parameter
-        //    {
-        //        Name = "keyValue",
-        //        Value = "#{GP_Left}.getSelectionModel().hasSelection() ? #{GP_Left}.getSelectionModel().getSelection()[0].data.F_Id : ''",
-        //        Mode = ParameterMode.Raw
-        //    });
-        //    B_Save.Click.Before = @"if (!#{FP_Right}.getForm().isValid()) { return false; }";
-        //    B_Save.Click.Success = "#{GP_Left}.store.reload();#{FP_Right}.getForm().reset();#{GP_Left}.getSelectionModel().clearSelections();";
-        //    B_Save.Click.EventMask.ShowMask = true;
-        //    B_Save.Click.EventMask.Msg = "处理中...";
-        //}),
         X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls =>
         {
             ls.Click.Handler = @"if (!#{GP_Main}.getSelectionModel().hasSelection()){
