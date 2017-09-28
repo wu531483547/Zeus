@@ -428,3 +428,46 @@ $.fn.dataGrid = function (options) {
     };
     $element.jqGrid(options);
 };
+$.saveRecord = function (options) {
+    var defaults = {
+        url: "",
+        param: [],
+        loading: "正在提交数据...",
+        success: null,
+        close: true
+    };
+    var options = $.extend(defaults, options);
+    $.loading(true, options.loading);
+    //options.param["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
+    debugger;
+    options.param["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();
+    window.setTimeout(function () {
+        $.ajax({
+            url: options.url,
+            data: options.param,
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                if (data.state == "success") {
+                    options.success(data);
+                    $.modalMsg(data.message, data.state);
+                    if (options.close == true) {
+                        $.modalClose();
+                    }
+                } else {
+                    $.modalAlert(data.message, data.state);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $.loading(false);
+                $.modalMsg(errorThrown, "error");
+            },
+            beforeSend: function () {
+                $.loading(true, options.loading);
+            },
+            complete: function () {
+                $.loading(false);
+            }
+        });
+    }, 500);
+}

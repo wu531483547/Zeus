@@ -4,19 +4,19 @@
 * CLR版本： 4.0.30319.42000 
 *机器名称：DESKTOP-FUHBS8L
 *公司名称：
-*命名空间：Zeus.Domain._03_Entity.Routine  
-*文件名：  JDCCY 
+*命名空间：Zeus.Domain._04_IRepository.Routine  
+*文件名：  IJdccyRepository 
 *版本号：  V1.0.0.0
-*唯一标识：e474aa97-7024-40d7-b676-865d3f87f338
+*唯一标识：e2a2ad88-b883-4e4d-ba14-2e7d0cd48415
 *当前的用户域：DESKTOP-FUHBS8L
 *创建人：  Rex
-*创建时间：2017/9/26 8:32:08 
+*创建时间：2017/9/26 8:44:52 
 
 *描述：
 *
 *=====================================================================
 *修改标记
-*修改时间：2017/9/26 8:32:08 
+*修改时间：2017/9/26 8:44:52 
 *修改人： HY-REX 
 *版本号： V1.0.0.0
 *描述：
@@ -24,10 +24,14 @@
 *****************************************************************************/
 #endregion
 
-namespace Zeus.Model
+using Zeus.Domain;
+using Zeus.Model;
+
+namespace Zeus.IRepository.Routine
 {
-    public partial class A_Jdccy : IEntity<A_Jdccy>, ICreationAudited, IDeleteAudited, IModificationAudited
+    public interface ICarCheckRepository : IRepositoryBase<A_CarCheck>
     {
-        
+
     }
 }
+

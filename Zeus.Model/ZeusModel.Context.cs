@@ -25,8 +25,6 @@ namespace Zeus.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<A_Jdccy> A_Jdccy { get; set; }
         public virtual DbSet<Sys_Area> Sys_Area { get; set; }
         public virtual DbSet<Sys_DbBackup> Sys_DbBackup { get; set; }
         public virtual DbSet<Sys_FilterIP> Sys_FilterIP { get; set; }
@@ -40,5 +38,6 @@ namespace Zeus.Model
         public virtual DbSet<Sys_RoleAuthorize> Sys_RoleAuthorize { get; set; }
         public virtual DbSet<Sys_User> Sys_User { get; set; }
         public virtual DbSet<Sys_UserLogOn> Sys_UserLogOn { get; set; }
+        public virtual DbSet<A_CarCheck> A_CarCheck { get; set; }
     }
 }

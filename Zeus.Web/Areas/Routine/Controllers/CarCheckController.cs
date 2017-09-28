@@ -7,25 +7,26 @@ using Zeus.Model;
 
 namespace Zeus.Web.Areas.Routine.Controllers
 {
-    public class JDCCYController : ControllerBase
+    public class CarCheckController : ControllerBase
     {
-        private JdccyApp jdccyApp = new JdccyApp();
+        private CarCheckApp carcheckApp = new CarCheckApp();
 
         [HttpGet]
         [HandlerAjaxOnly]
         public StoreResult GetList()
         {
-            var data = jdccyApp.GetList();
+            var data = carcheckApp.GetList();
             return this.Store(data, data.Count);
         }
 
-        [HttpGet]
+        [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveSingle(A_Jdccy jdccyEntity, string keyValue)
+        public ActionResult SaveSingle(A_CarCheck fpValue, string keyValue)
         {
-            jdccyApp.SubmitSingle(jdccyEntity, keyValue);
+            //carcheckApp.SubmitSingle(carcheckEntity, keyValue);
             return Success("操作成功。");
+            //return DirectNotify();
         }
 
         [HttpGet]
@@ -33,7 +34,7 @@ namespace Zeus.Web.Areas.Routine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSingle(string keyValue)
         {
-            jdccyApp.DeleteSingle(keyValue);
+            carcheckApp.DeleteSingle(keyValue);
             return Success("操作成功。");
         }
     }

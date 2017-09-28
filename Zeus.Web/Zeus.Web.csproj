@@ -388,7 +388,7 @@
     <Compile Include="App_Start\ExtNetConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Routine\Controllers\JDCCYController.cs" />
+    <Compile Include="Areas\Routine\Controllers\CarCheckController.cs" />
     <Compile Include="Areas\Routine\RoutineAreaRegistration.cs" />
     <Compile Include="Areas\SystemManage\Controllers\AreaController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\DutyController.cs" />
@@ -480,9 +480,9 @@
     <Content Include="Areas\SystemSecurity\Views\Log\RemoveLog.cshtml" />
     <Content Include="Areas\SystemSecurity\Views\ServerMonitoring\Index.cshtml" />
     <Content Include="Areas\Routine\Views\web.config" />
-    <Content Include="Areas\Routine\Views\JDCCY\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Areas\Routine\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Routine\Views\CarCheck\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

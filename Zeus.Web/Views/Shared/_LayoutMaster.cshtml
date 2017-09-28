@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link href="~/Content/css/CssMain.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/Content/js/bootstrap/bootstrap.js"></script>
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+    <script src="~/Content/js/framework-ui.js"></script>
     <script type="text/javascript">
+        @*var token = $('@Html.AntiForgeryToken()').val();*@
         document.onkeydown = function (e) {
             var event = e || window.event;
             var key = event.keyCode || event.which;
@@ -32,6 +37,7 @@
 <body>
     @X.ResourceManager(ViewBag.ManagerConfig as MvcResourceManagerConfig)
     @RenderBody()
+    @Html.AntiForgeryToken()
 </body>
 </html>
 @RenderSection("footer", false)

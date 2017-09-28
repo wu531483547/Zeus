@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Routine\IJdccyRepository.cs" />
+    <Compile Include="Routine\ICarCheckRepository.cs" />
     <Compile Include="SystemManage\IAreaRepository.cs" />
     <Compile Include="SystemManage\IItemsDetailRepository.cs" />
     <Compile Include="SystemManage\IItemsRepository.cs" />

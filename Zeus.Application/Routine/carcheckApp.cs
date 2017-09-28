@@ -33,15 +33,15 @@ using System;
 
 namespace Zeus.Application.Routine
 {
-    public class JdccyApp
+    public class CarCheckApp
     {
-        private IJdccyRepository service = new JdccyRepository();
+        private ICarCheckRepository service = new CarCheckRepository();
 
-        public List<A_Jdccy> GetList()
+        public List<A_CarCheck> GetList()
         {
             return service.IQueryable().OrderBy(t => t.F_CreatorTime).ToList();
         }
-        public A_Jdccy GetSingle(string keyValue)
+        public A_CarCheck GetSingle(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -49,7 +49,7 @@ namespace Zeus.Application.Routine
         {
             service.Delete(t => t.F_Id == keyValue);
         }
-        public void SubmitSingle(A_Jdccy jdccyEntity, string keyValue)
+        public void SubmitSingle(A_CarCheck jdccyEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {

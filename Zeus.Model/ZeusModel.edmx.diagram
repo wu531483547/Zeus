@@ -5,8 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e455ae29e7e74ee6a5893708112c546a" Name="Diagram1">
-        <EntityTypeShape EntityType="ZeusModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.A_Jdccy" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.Sys_Area" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.Sys_DbBackup" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.Sys_FilterIP" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
@@ -20,6 +18,7 @@
         <EntityTypeShape EntityType="ZeusModel.Sys_RoleAuthorize" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.Sys_User" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.Sys_UserLogOn" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.A_CarCheck" Width="1.5" PointX="9.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
