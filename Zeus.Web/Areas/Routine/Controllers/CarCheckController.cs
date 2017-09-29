@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Zeus.Application.Routine;
+using Zeus.Core;
 
 namespace Zeus.Web.Areas.Routine.Controllers
 {
@@ -35,6 +36,27 @@ namespace Zeus.Web.Areas.Routine.Controllers
         {
             carcheckApp.DeleteSingle(keyValue);
             return Success("操作成功。");
+        }
+
+        [HttpGet]
+        [HandlerAjaxOnly]
+        public ActionResult GetSingle(string keyValue)
+        {
+            var data = carcheckApp.GetSingle(keyValue);
+            return Content(data.ToJson());
+        }
+
+        [HttpGet]
+        public void CreateQrCode(string carNumber)
+        {
+            QrCode QC = new QrCode();
+            QC.CreateCode_Choose("CG" + carNumber, "Byte", "L", 0, 4);
+        }
+
+        [HttpGet]
+        public ActionResult Print()
+        {
+            return View();
         }
     }
 }

@@ -371,12 +371,22 @@
     <Content Include="Content\js\wdtree\tree.js" />
     <Content Include="Content\js\wizard\wizard.css" />
     <Content Include="Content\js\wizard\wizard.js" />
+    <Content Include="Content\js\Zeus.js" />
     <Content Include="Content\js\zsign\jquery.zsign.css" />
     <Content Include="Content\js\zsign\jquery.zsign.js" />
     <Content Include="Content\js\zsign\signet.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="TextTemplate1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextTemplate1.txt</LastGenOutput>
+    </Content>
+    <Content Include="TextTemplate1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextTemplate1.tt</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -489,6 +499,7 @@
     <Content Include="Areas\SystemManage\Views\ItemsType\Details.cshtml" />
     <Content Include="Areas\SystemManage\Views\ItemsType\Form.cshtml" />
     <Content Include="Areas\SystemManage\Views\ItemsType\Index.cshtml" />
+    <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,86 @@
+﻿ 
+ 
+ 
+ 
+  
+  var vF_6; 
+ if (data.F_6) 
+ {
+  vF_6 = "&radic;注册登记"; 
+ } 
+  var vF_7; 
+ if (data.F_7) 
+ {
+  vF_7 = "&radic;注册登记"; 
+ } 
+  var vF_8; 
+ if (data.F_8) 
+ {
+  vF_8 = "&radic;注册登记"; 
+ } 
+  var vF_9; 
+ if (data.F_9) 
+ {
+  vF_9 = "&radic;注册登记"; 
+ } 
+  var vF_10; 
+ if (data.F_10) 
+ {
+  vF_10 = "&radic;注册登记"; 
+ } 
+  var vF_11; 
+ if (data.F_11) 
+ {
+  vF_11 = "&radic;注册登记"; 
+ } 
+  var vF_12; 
+ if (data.F_12) 
+ {
+  vF_12 = "&radic;注册登记"; 
+ } 
+  var vF_13; 
+ if (data.F_13) 
+ {
+  vF_13 = "&radic;注册登记"; 
+ } 
+  var vF_14; 
+ if (data.F_14) 
+ {
+  vF_14 = "&radic;注册登记"; 
+ } 
+  var vF_15; 
+ if (data.F_15) 
+ {
+  vF_15 = "&radic;注册登记"; 
+ } 
+  var vF_16; 
+ if (data.F_16) 
+ {
+  vF_16 = "&radic;注册登记"; 
+ } 
+  var vF_17; 
+ if (data.F_17) 
+ {
+  vF_17 = "&radic;注册登记"; 
+ } 
+  var vF_18; 
+ if (data.F_18) 
+ {
+  vF_18 = "&radic;注册登记"; 
+ } 
+  var vF_19; 
+ if (data.F_19) 
+ {
+  vF_19 = "&radic;注册登记"; 
+ } 
+  var vF_20; 
+ if (data.F_20) 
+ {
+  vF_20 = "&radic;注册登记"; 
+ } 
+  var vF_21; 
+ if (data.F_21) 
+ {
+  vF_21 = "&radic;注册登记"; 
+ } 
+ 

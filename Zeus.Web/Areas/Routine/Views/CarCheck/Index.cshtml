@@ -4,6 +4,7 @@
     var X = Html.X();
 }
 @section header{
+<script src="~/Content/js/Zeus.js"></script>
     <script type="text/javascript">
         var AddRecord = function () {
             this.up('form').getForm().reset();
@@ -95,7 +96,7 @@
         var PrintRecord = function () {
             if (App.GP_Left.getSelectionModel().hasSelection()) {
                 var TempID = App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id;
-                var TempUrl = 'http://localhost:20308/Config/WebPrint.aspx?ID=' + TempID;
+                var TempUrl = GetRootPath() + '/Routine/CarCheck/Print?keyValue=' + TempID;
                 window.parent.open(TempUrl)
             }
             else {

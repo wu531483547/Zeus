@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using Zeus.Application;
 using Zeus.Application.SystemManage;
 using Zeus.Application.SystemSecurity;
 using Zeus.Core;
@@ -17,7 +16,7 @@ namespace Zeus.Web.Controllers
         ///</summary>
         [HttpGet]
         public virtual ActionResult Index()
-        {
+        {           
             return View();
         }
 
