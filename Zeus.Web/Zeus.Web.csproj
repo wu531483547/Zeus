@@ -399,6 +399,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Routine\Controllers\CarCheckController.cs" />
+    <Compile Include="Areas\Routine\Controllers\ReceivablesController.cs" />
     <Compile Include="Areas\Routine\RoutineAreaRegistration.cs" />
     <Compile Include="Areas\SystemManage\Controllers\AreaController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\DutyController.cs" />
@@ -500,6 +501,7 @@
     <Content Include="Areas\SystemManage\Views\ItemsType\Form.cshtml" />
     <Content Include="Areas\SystemManage\Views\ItemsType\Index.cshtml" />
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
+    <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
