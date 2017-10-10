@@ -269,6 +269,7 @@
     <Content Include="Content\js\jqgrid\jqgrid.min.js" />
     <Content Include="Content\js\jqprint\jquery.jqprint-0.3.js" />
     <Content Include="Content\js\jqprint\jquery.jqprint.css" />
+    <Content Include="Content\js\jqprint\jQuery.print.js" />
     <Content Include="Content\js\jquery-ui\images\calendar.gif" />
     <Content Include="Content\js\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\js\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />

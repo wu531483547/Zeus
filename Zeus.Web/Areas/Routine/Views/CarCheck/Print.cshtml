@@ -13,6 +13,7 @@
     <script src="~/Content/js/bootstrap/bootstrap.js"></script>
     <script src="~/Content/js/framework-ui.js"></script>
     <script src="~/Content/js/Zeus.js"></script>
+    <script src="~/Content/js/jqprint/jQuery.print.js"></script>
     <script type="text/javascript">
         var keyValue = $.request("keyValue");
         $(function () {
@@ -22,19 +23,78 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
-                    debugger;
                     $("#L_F_1").text(data.F_1);
                     $("#L_F_2").text(data.F_2);
                     $("#L_F_3").text(data.F_3);
-                    var _ywlx,str2
-                    $("#S_YWLX").html(_ywlx);
-                    //$("#form1").formSerialize(data);
-                    //$("#form1").find('.form-control,select,input').attr('readonly', 'readonly');
-                    //$("#form1").find('div.ckbox label').attr('for', '');
-                    //$("#F_UserPassword").val("******");
+                    var vYwlx, vF_6, vF_7, vF_8, vF_9, vF_10, vF_11, vF_12, vF_13, vF_14, vF_15, vF_16, vF_17, vF_18, vF_19, vF_20, vF_21;
+                    var vArr = new Array();
+                    vF_6 = data.F_6 ? "&radic;注册登记," : "注册登记,";
+                    vF_7 = data.F_7 ? "&radic;转入," : "转入,";
+                    vF_8 = data.F_8 ? "&radic;转移登记," : "转移登记,";
+                    vF_9 = data.F_9 ? "&radic;变更迁出," : "变更迁出,";
+                    vF_10 = data.F_10 ? "&radic;变更车身颜色," : "变更车身颜色,";
+                    vF_11 = data.F_11 ? "&radic;变更车身或车架," : "变更车身或车架,";
+                    vF_12 = data.F_12 ? "&radic;变更发动机," : "变更发动机,";
+                    vF_13 = data.F_13 ? "&radic;变更使用性质," : "变更使用性质,";
+                    vF_14 = data.F_14 ? "&radic;重新打刻VIN," : "重新打刻VIN,";
+                    vF_15 = data.F_15 ? "&radic;重新打刻发动机号," : "重新打刻发动机号,";
+                    vF_16 = data.F_16 ? "&radic;加装/拆除操纵辅助装置," : "加装/拆除操纵辅助装置,";
+                    vF_17 = data.F_17 ? "&radic;更换整车," : "更换整车,";
+                    vF_18 = data.F_18 ? "&radic;申领登记证书," : "申领登记证书,";
+                    vF_19 = data.F_19 ? "&radic;补领登记证书," : "补领登记证书,";
+                    vF_20 = data.F_20 ? "&radic;监销," : "监销,";
+                    vF_21 = data.F_21 ? "&radic;其他" : "其他";
+                    vArr[0] = "&nbsp;业务类型：";
+                    vArr[1] = vF_6;
+                    vArr[2] = vF_7;
+                    vArr[3] = vF_8;
+                    vArr[4] = vF_9;
+                    vArr[5] = vF_10;
+                    vArr[6] = vF_11;
+                    vArr[7] = vF_12;
+                    vArr[8] = vF_13;
+                    vArr[9] = vF_14;
+                    vArr[10] = vF_15;
+                    vArr[11] = vF_16;
+                    vArr[12] = vF_17;
+                    vArr[13] = vF_18;
+                    vArr[14] = vF_19;
+                    vArr[15] = vF_20;
+                    vArr[16] = vF_21;
+                    vYwlx = vArr.join(" ")
+                    $("#S_YWLX").html(vYwlx);
+                    $("#T_CLSBDM").html(data.F_22 ? "&radic;" : "");
+                    $("#T_FDJXH").html(data.F_23 ? "&radic;" : "");
+                    $("#T_CSPPXH").html(data.F_24 ? "&radic;" : "");
+                    $("#T_CLLX").html(data.F_25 ? "&radic;" : "");
+                    $("#T_HPCLWGXZ").html(data.F_26 ? "&radic;" : "");
+                    $("#T_LTWHQK").html(data.F_27 ? "&radic;" : "");
+                    $("#T_AQDSJJGP").html(data.F_28 ? "&radic;" : "");
+                    $("#T_WLCCZS").html(data.F_29 ? "&radic;" : "");
+                    $("#T_ZBZL").html(data.F_30 ? "&radic;" : "");
+                    $("#T_LTGG").html(data.F_31 ? "&radic;" : "");
+                    $("#T_CHBFHZZ").html(data.F_32 ? "&radic;" : "");
+                    $("#T_CSFGBS").html(data.F_33 ? "&radic;" : "");
+                    $("#T_MHQ").html(data.F_34 ? "&radic;" : "");
+                    $("#T_XSJLZZ").html(data.F_35 ? "&radic;" : "");
+                    $("#T_YJCK").html(data.F_36 ? "&radic;" : "");
+                    $("#T_WBBS").html(data.F_37 ? "&radic;" : "");
+                    $("#T_BZDJ").html(data.F_38 ? "&radic;" : "");
+                    $("#T_JYHGZM").html(data.F_39 ? "&radic;" : "");
                 }
             });
+            $("#机动车查验记录表_11993").print({
+                mediaPrint: false,
+                iframe: false,
+                noPrintSelector: ".avoid-this",
+                prepend: "",
+                append: "",
+                deferred: $.Deferred().done(function () { })
+            });
         });
+        var PrintFile = function () {
+            $("#机动车查验记录表_11993").print();
+        };
     </script>
     <style id="机动车查验记录表_11993_Styles">
         .font011993 {
@@ -463,7 +523,7 @@
         }
     </style>
 </head>
-<body>
+<body ondblclick="PrintFile()">
     <form id="form1">
         <div id="机动车查验记录表_11993" align="center" x:publishsource="Excel">
             <div style="margin: 0 auto; width: 695px; height: 80px;">
@@ -510,7 +570,7 @@
                     </td>
                     <td class="xl6411993" style='border: 1px solid #000000'>1</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>车辆识别代码</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CLSBDM" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CLSBDM"></td>
                     <td rowspan="4" class="xl6911993" width="69" style='border-top: none; width: 52pt; border: 1px solid #000000'>
                         大 中
                         型<br>
@@ -521,53 +581,53 @@
                     </td>
                     <td class="xl6411993" style='border: 1px solid #000000'>15</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>灭火器</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_MHQ" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_MHQ"></td>
                 </tr>
                 <tr height="36" style='mso-height-source: userset; height: 27.0pt; border: 1px solid #000000'>
                     <td height="36" class="xl6411993" style='height: 27.0pt; border: 1px solid #000000'>2</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>发动机型号/号码</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_FDJXH" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_FDJXH"></td>
                     <td class="xl6411993" style='border: 1px solid #000000'>16</td>
                     <td class="xl6711993" width="153" style='border: 1px solid #000000; width: 115pt'>行驶记录装置、车内外录像 监控装置</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_XSJLZZ" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_XSJLZZ"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border: 1px solid #000000'>3</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>车身品牌/型号</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSPPXH" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSPPXH"></td>
                     <td class="xl6411993" style='border: 1px solid #000000'>17</td>
                     <td class="xl6611993" style='border: 1px solid #000000'>应急出口/应急锤、乘客门</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_YJCK" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_YJCK"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border: 1px solid #000000'>4</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>车身颜色</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSYS" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSYS"></td>
                     <td class="xl6411993" style='border: 1px solid #000000'>18</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>外部标识/文字、喷涂</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_WBBS" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_WBBS"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border: 1px solid #000000'>5</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>核定载人数</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_HDZRS" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_HDZRS"></td>
                     <td rowspan="2" class="xl6411993" style='border: 1px solid #000000'>其 他</td>
                     <td class="xl6411993" style='border: 1px solid #000000'>19</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>标志灯具、警报器</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_BZDJ" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_BZDJ"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border: 1px solid #000000'>6</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>车辆类型</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CLLX" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CLLX"></td>
                     <td class="xl6411993" style='border: 1px solid #000000'>20</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>检验合格证明</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_JYHGZM" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_JYHGZM"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border: 1px solid #000000'>7</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>号牌/车辆外观形状</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_HPCLWGXZ" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_HPCLWGXZ"></td>
                     <td colspan="4" rowspan="3" class="xl7311993" width="350" style="width: 263pt;">
                         &nbsp;查验结论：<br>
                         <br>
@@ -581,12 +641,12 @@
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border-top: none; border-left: none'>8</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>轮胎完好情况</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_LTWHQK" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_LTWHQK"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border-top: none; border-left: none'>9</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>安全带、三角警告牌</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_AQDSJJGP" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_AQDSJJGP"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td rowspan="5" height="130" class="xl6911993" width="39" style='height: 100.5pt; border-top: none; width: 29pt'>
@@ -596,7 +656,7 @@
                     </td>
                     <td class="xl6411993" style='border: 1px solid #000000'>10</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>外廓尺寸、轴数</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_WLCCZS" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_WLCCZS"></td>
                     <td colspan="4" rowspan="3" class="xl7311993" width="350" style='width: 263pt'>
                         &nbsp;查验员：<br>
                         <br>
@@ -609,17 +669,17 @@
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border-top: none; border-left: none'>11</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>整备质量</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_ZBZL" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_ZBZL"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border-top: none; border-left: none'>12</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>轮胎规格</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_LTGG" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_LTGG"></td>
                 </tr>
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl6411993" style='height: 20.1pt; border-top: none; border-left: none'>13</td>
                     <td class="xl6511993" style='border: 1px solid #000000'>侧后部防护装置</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CHBFHZZ" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CHBFHZZ"></td>
                     <td rowspan="2" class="xl6411993" style='border: 1px solid #000000'>复检合格</td>
                     <td colspan="3" rowspan="2" class="xl7311993" width="281" style='width: 211pt;'>
                         &nbsp;查验员：<br>
@@ -633,7 +693,7 @@
                 <tr height="26" style='mso-height-source: userset; height: 20.1pt; border: 1px solid #000000'>
                     <td height="26" class="xl7411993" style='height: 20.1pt; border-top: none; border-left: none'>14</td>
                     <td class="xl7511993" style='border: 1px solid #000000'>车身反光标识</td>
-                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSFGBS" runat="server"></td>
+                    <td class="xl6411993" style='border: 1px solid #000000' id="T_CSFGBS"></td>
                 </tr>
                 <tr style='mso-height-source: userset; border: 1px solid #000000'>
                     <td colspan="5" class="auto-style1" width="414">
@@ -680,4 +740,3 @@
     </form>
 </body>
 </html>
-

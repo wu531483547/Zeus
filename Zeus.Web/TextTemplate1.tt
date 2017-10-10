@@ -4,12 +4,8 @@
 <#@ import namespace="System.Text" #> 
 <#@ import namespace="System.Collections.Generic" #>
  <#@ output extension=".txt" #> 
- <# for (int i = 6; i < 22; i++) 
+ <# for (int i = 24; i < 40; i++) 
  { 
  #>
- var vF_<#=i#>; 
- if (data.F_<#=i#>) 
- {
-  vF_<#=i#> = "&radic;注册登记"; 
- } 
+ $("#T_FDJXH").html(data.F_<#=i#> ? "&radic;" : "");
  <#}#>
