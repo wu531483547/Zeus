@@ -26,6 +26,8 @@
                     $("#L_F_1").text(data.F_1);
                     $("#L_F_2").text(data.F_2);
                     $("#L_F_3").text(data.F_3);
+                    $("#T_CSYS").html(data.F_4);
+                    $("#T_HDZRS").html(data.F_5);
                     var vYwlx, vF_6, vF_7, vF_8, vF_9, vF_10, vF_11, vF_12, vF_13, vF_14, vF_15, vF_16, vF_17, vF_18, vF_19, vF_20, vF_21;
                     var vArr = new Array();
                     vF_6 = data.F_6 ? "&radic;注册登记," : "注册登记,";
@@ -85,7 +87,7 @@
             });
             $("#机动车查验记录表_11993").print({
                 mediaPrint: false,
-                iframe: false,
+                iframe: true,
                 noPrintSelector: ".avoid-this",
                 prepend: "",
                 append: "",
