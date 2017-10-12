@@ -270,6 +270,10 @@
     <Content Include="Content\js\jqprint\jquery.jqprint-0.3.js" />
     <Content Include="Content\js\jqprint\jquery.jqprint.css" />
     <Content Include="Content\js\jqprint\jQuery.print.js" />
+    <Content Include="Content\js\jqprint\jquery打印demo\index.html" />
+    <Content Include="Content\js\jqprint\jquery打印demo\js\jQuery.print.js" />
+    <Content Include="Content\js\jqprint\jquery打印demo\js\jquery\jquery.js" />
+    <Content Include="Content\js\jqprint\jquery打印demo\js\jquery\jquery.min.js" />
     <Content Include="Content\js\jquery-ui\images\calendar.gif" />
     <Content Include="Content\js\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\js\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
