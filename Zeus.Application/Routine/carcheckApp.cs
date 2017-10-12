@@ -40,11 +40,11 @@ namespace Zeus.Application.Routine
     {
         private ICarCheckRepository service = new CarCheckRepository();
 
-        public List<A_CarCheck> GetList(DateTime? BeginTime, DateTime? EndTime)
+        public List<A_CarCheck> GetList(DateTime BeginTime, DateTime EndTime)
         {
-            return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime)>= BeginTime
-            && DbFunctions.TruncateTime(t.F_CreatorTime) <= BeginTime
-            ).OrderBy(t => t.F_CreatorTime).ToList();
+            EndTime = EndTime.AddDays(1);
+            return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).ToList();
         }
         public A_CarCheck GetSingle(string keyValue)
         {
@@ -228,6 +228,11 @@ namespace Zeus.Application.Routine
                 carcheckEntity.Create();
                 service.Insert(carcheckEntity);
             }
+        }
+        public void CreateQrCode(string carNumber)
+        {
+            QrCode QC = new QrCode();
+            QC.CreateCode_Choose("CG" + carNumber, "Byte", "L", 0, 4);
         }
     }
 }

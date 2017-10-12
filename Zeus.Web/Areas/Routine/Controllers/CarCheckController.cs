@@ -14,7 +14,7 @@ namespace Zeus.Web.Areas.Routine.Controllers
 
         [HttpGet]
         [HandlerAjaxOnly]
-        public StoreResult GetList(DateTime? BeginTime,DateTime? EndTime)
+        public StoreResult GetList(DateTime BeginTime,DateTime EndTime)
         {
             var data = carcheckApp.GetList(BeginTime, EndTime);
             return this.Store(data, data.Count);
@@ -43,15 +43,9 @@ namespace Zeus.Web.Areas.Routine.Controllers
         public ActionResult GetSingle(string keyValue)
         {
             var data = carcheckApp.GetSingle(keyValue);
+            carcheckApp.CreateQrCode(data.F_1);
             return Content(data.ToJson());
-        }
-
-        [HttpGet]
-        public void CreateQrCode(string carNumber)
-        {
-            QrCode QC = new QrCode();
-            QC.CreateCode_Choose("CG" + carNumber, "Byte", "L", 0, 4);
-        }
+        }        
 
         [HttpGet]
         public ActionResult Print()

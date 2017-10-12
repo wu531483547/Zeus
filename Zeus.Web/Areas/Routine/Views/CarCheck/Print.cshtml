@@ -83,6 +83,7 @@
                     $("#T_WBBS").html(data.F_37 ? "&radic;" : "");
                     $("#T_BZDJ").html(data.F_38 ? "&radic;" : "");
                     $("#T_JYHGZM").html(data.F_39 ? "&radic;" : "");
+                    $("#I_EWM").attr('src', GetRootPath() + "/Resource/Temp.jpg");
                 }
             });
             $("#机动车查验记录表_11993").print({
@@ -530,7 +531,7 @@
         <div id="机动车查验记录表_11993" align="center" x:publishsource="Excel">
             <div style="margin: 0 auto; width: 695px; height: 80px;">
                 <div style="float: left; padding-left: 30px;">
-                    <img src="~/Resource/Temp.jpg" width="80" height="80" />
+                    <img id="I_EWM" src="" width="80" height="80" />
                 </div>
                 <div style="font-size:30px; font-weight:bold; line-height:80px; margin-left:0px;width:530px;overflow: hidden; float:left">机 动 车 查 验 记 录 表</div>
                 <div style="float: left; margin-bottom: 5px;">
