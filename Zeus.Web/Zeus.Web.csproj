@@ -383,6 +383,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="Resource\Temp.jpg" />
     <Content Include="TextTemplate1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTemplate1.txt</LastGenOutput>
@@ -507,6 +508,7 @@
     <Content Include="Areas\SystemManage\Views\ItemsType\Index.cshtml" />
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
+    <Content Include="Resource\DbBackup\201710171611474728.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -517,7 +519,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Readme\" />
-    <Folder Include="Resource\DbBackup\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeus.Application\Zeus.Application.csproj">
