@@ -29,7 +29,6 @@
                 isTool: false,
                 nodeTools: []
             };
-
         $.extend(dfop, settings);
         var treenodes = dfop.data;
         var me = $(this);
