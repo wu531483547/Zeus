@@ -28,7 +28,7 @@
                         },
                         success: function (result) {
                             if (result.state == "success") {
-                                $.modalMsg(result.message, result.state);
+                                //$.modalMsg(result.message, result.state);
                                 App.FP_Right.getForm().reset();
                                 App.GP_Left.store.reload();
                                 App.GP_Left.getSelectionModel().clearSelections();
@@ -204,5 +204,5 @@
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
             X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
             X.Button().Text("删除").Width(80).Icon(Icon.Delete).Listeners(ls => ls.Click.Fn = "DeleteRecord"),
-            X.Button().Text("清空输入").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
+            X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
             X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))

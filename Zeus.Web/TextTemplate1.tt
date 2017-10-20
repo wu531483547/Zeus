@@ -4,58 +4,8 @@
 <#@ import namespace="System.Text" #> 
 <#@ import namespace="System.Collections.Generic" #>
  <#@ output extension=".txt" #> 
- <# for (int i = 1; i < 15; i++) 
+ <# for (int i = 6; i < 40; i++) 
  { 
  #>
- insert into tb_sys_module
-  (f_id,
-   f_parentid,
-   f_layers,
-   f_encode,
-   f_fullname,
-   f_icon,
-   f_urladdress,
-   f_target,
-   f_ismenu,
-   f_isexpand,
-   f_ispublic,
-   f_allowedit,
-   f_allowdelete,
-   f_sortcode,
-   f_deletemark,
-   f_enabledmark,
-   f_description,
-   f_creatortime,
-   f_creatoruserid,
-   f_lastmodifytime,
-   f_lastmodifyuserid,
-   f_deletetime,
-   f_deleteuserid,
-   f_ismodule)
-values
-  (
-  '<#= Guid.NewGuid().ToString()#>',
-   '6b529db2-cb27-4d2d-8144-628a86460f51',
-   '',
-   '',
-   '',
-   'fa fa-file',
-   '',
-   'iframe',
-   1,
-   0,
-   0,
-   0,
-   0,
-   <#=12+i#>,
-   '',
-   1,
-   '',
-   sysdate,
-   '9f2ec079-7d0f-4fe2-90ab-8b09a8302aba',
-   '',
-   '',
-   '',
-   '',
-   '否');
+ carcheckEntity.F_<#=i#> = carcheckDic.ContainsKey("F_<#=i#>") == true ? true : false;
  <#}#>

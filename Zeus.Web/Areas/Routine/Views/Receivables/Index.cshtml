@@ -16,7 +16,7 @@
                 $.loading(true, "正在提交数据...");
                 window.setTimeout(function () {
                     $.ajax({
-                        url: "/Routine/CarCheck/SaveSingle",
+                        url: "/Routine/Receivables/SaveSingle",
                         loading: "正在提交数据...",
                         type: "post",
                         dataType: "json",
@@ -28,7 +28,7 @@
                         },
                         success: function (result) {
                             if (result.state == "success") {
-                                $.modalMsg(result.message, result.state);
+                                //$.modalMsg(result.message, result.state);
                                 App.FP_Right.getForm().reset();
                                 App.GP_Left.store.reload();
                                 App.GP_Left.getSelectionModel().clearSelections();
@@ -45,58 +45,16 @@
                             $.loading(false);
                         }
                     });
-                }, 500);
+                }, 300);
             }
             else {
                 return false;
             }
         };
-        var DeleteRecord = function () {
-            if (App.GP_Left.getSelectionModel().hasSelection()) {
-                $.modalConfirm("注：您确定要删除该项数据吗？", function (r) {
-                    if (r) {
-                        $.loading(true, "正在提交数据...");
-                        window.setTimeout(function () {
-                            $.ajax({
-                                url: "/Routine/CarCheck/DeleteSingle",
-                                loading: "正在提交数据...",
-                                type: "post",
-                                dataType: "json",
-                                data: {
-                                    __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
-                                    keyValue: App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id
-                                },
-                                success: function (result) {
-                                    if (result.state == "success") {
-                                        $.modalMsg(result.message, result.state);
-                                        App.FP_Right.getForm().reset();
-                                        App.GP_Left.store.reload();
-                                        App.GP_Left.getSelectionModel().clearSelections();
-                                        App.GP_Left.getView().refresh();
-                                    } else {
-                                        $.modalAlert(result.message, result.state);
-                                    }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    $.loading(false);
-                                    $.modalMsg(errorThrown, "error");
-                                },
-                                complete: function () {
-                                    $.loading(false);
-                                }
-                            });
-                        }, 500);
-                    }
-                });
-            }
-            else {
-                $.modalMsg("请至少选中一条明细进行操作！");
-            }
-        };
         var PrintRecord = function () {
             if (App.GP_Left.getSelectionModel().hasSelection()) {
                 var TempID = App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id;
-                var TempUrl = GetRootPath() + '/Routine/CarCheck/Print?keyValue=' + TempID;
+                var TempUrl = GetRootPath() + '/Routine/Receivables/Print?keyValue=' + TempID;
                 window.parent.open(TempUrl)
             }
             else {
@@ -109,13 +67,24 @@
                 this.up('form').getForm().loadRecord(row[0]);
             }
         };
+        var GetDXJE = function () {
+            var vDXJE = smalltoBIG(App.NF_SFJE.getValue());
+            App.TF_JEDX.setValue(vDXJE);
+        };
+        var SumCount = function () {
+            $.ajax({
+                url: "/Routine/Receivables/GetSumInfo",
+                data: { beginDate: formatExtTime(App.DF_BeginTime.getValue()), endDate: formatExtTime(App.DF_EndTime.getValue()) },
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    App.TF_EnableCount.setValue(data.vEnableCount + "条");
+                    App.TF_DisableCount.setValue(data.vDisableCount + "条");
+                    App.TF_Sum.setValue(data.vSum + "元");
+                }
+            });
+        };
     </script>
-    @*<style type="text/css">
-        .x-form-checkbox-default {
-            width: 30px;
-            height: 30px;
-        }
-    </style>*@
 }
 @(X.Viewport().Layout(LayoutType.Fit).Items(
         X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
@@ -129,7 +98,7 @@
             ).Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
             .Reader(X.JsonReader().RootProperty("data").TotalProperty("total")))).ColumnModel(
                 X.RowNumbererColumn().Align(Alignment.Center).Text("序号").Width(50),
-                X.Column().Text("收款单号").DataIndex("F_1").Filter(X.StringFilter().EmptyText("输入收款单号")).Width(180),
+                X.Column().Text("收款单号").DataIndex("F_SKDH").Filter(X.StringFilter().EmptyText("输入收款单号")).Width(180),
                 X.DateColumn().Text("收款时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150))
             .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
             .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询")).Listeners(l => l.SelectionChange.Fn = "SelectedRecord"),
@@ -137,27 +106,33 @@
             .Layout(LayoutType.Form).Region(Region.Center).BodyStyle("overflow-x:visible;overflow-y:hidden").Items(
                 X.FieldSet().Title("收款明细").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
                 .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).Collapsible(true).PaddingSpec("3").Items(
-                    X.ComboBox().FieldLabel("车辆类型").Name("F_2").Text("小型汽车").AllowBlank(false).Items(
+                    X.ComboBox().FieldLabel("车辆类型").Name("F_CLLX").Text("小型汽车").AllowBlank(false).Items(
                         X.ListItem().Text("大型汽车"),
                         X.ListItem().Text("小型汽车")),
-                    X.ComboBox().FieldLabel("车辆类别").Name("F_3").Text("旧车").AllowBlank(false).Items(
+                    X.ComboBox().FieldLabel("车辆类别").Name("F_CLLB").Text("新车").AllowBlank(false).Items(
                         X.ListItem().Text("新车"),
                         X.ListItem().Text("旧车")),
                     X.DateField().FieldLabel("收款时间").Format("yyyy-MM-dd HH:mm:ss").ReadOnly(true)
-                        .Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false),
-                    X.NumberField().FieldLabel("收费金额").Name("F_5").AllowBlank(false).MinValue(0).MarginSpec("20px 0px 0px 0px"),
-                    X.TextField().FieldLabel("金额大写").Name("F_Remakes").MarginSpec("20px 0px 0px 0px"),
-                    X.Checkbox().BoxLabel("是否记账").BoxLabelAlign(BoxLabelAlign.Before).MarginSpec("20px 0px 0px 30px").Name("F_22"),
-                    X.TextField().FieldLabel("借款人员").Name("F_Remakes").MarginSpec("20px 0px 20px 0px"),
+                        .Text(@DateTime.Now.ToString()).AutoDataBind(true).Editable(false),
+                    X.NumberField().ID("NF_SFJE").FieldLabel("收费金额").Name("F_SFJE").AllowBlank(false).MinValue(0).MarginSpec("20px 0px 0px 0px")
+                    .Listeners(ls => ls.Change.Fn = "GetDXJE"),
+                    X.TextField().ID("TF_JEDX").FieldLabel("金额大写").Name("F_JEDX").MarginSpec("20px 0px 0px 0px").Editable(false).ReadOnly(true),
+                    X.Checkbox().BoxLabel("是否记账").BoxLabelAlign(BoxLabelAlign.Before).MarginSpec("20px 0px 0px 30px").Name("F_JZZT"),
+                    X.TextField().FieldLabel("借款人员").Name("F_JKRY").MarginSpec("20px 0px 20px 0px"),
                     X.TextField().FieldLabel("备注").Name("F_Remakes").MarginSpec("20px 0px 20px 0px")),
                 X.FieldSet().Title("收款项目").LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table)
                     .Collapsible(true).PaddingSpec("3").Items(
-                        X.Checkbox().BoxLabel("磨号").InputWidth(30).BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("门字").BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("照相").BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("载重量").BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("扩大号").BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("人数").BoxLabelAlign(BoxLabelAlign.Before).Name("F_22").MarginSpec("20px 0px 20px 30px"))))
+                        X.Checkbox().BoxLabel("磨号").InputWidth(30).BoxLabelAlign(BoxLabelAlign.Before).Name("F_MH").MarginSpec("20px 0px 20px 30px"),
+                        X.Checkbox().BoxLabel("门字").BoxLabelAlign(BoxLabelAlign.Before).Name("F_MZ").MarginSpec("20px 0px 20px 30px"),
+                        X.Checkbox().BoxLabel("照相").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZX").MarginSpec("20px 0px 20px 30px"),
+                        X.Checkbox().BoxLabel("载重量").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZZL").MarginSpec("20px 0px 20px 30px"),
+                        X.Checkbox().BoxLabel("扩大号").BoxLabelAlign(BoxLabelAlign.Before).Name("F_KDH").MarginSpec("20px 0px 20px 30px"),
+                        X.Checkbox().BoxLabel("人数").BoxLabelAlign(BoxLabelAlign.Before).Name("F_RS").MarginSpec("20px 0px 20px 30px")),
+                 X.FieldSet().Title("区间合计").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
+                 .LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table).Collapsible(true).PaddingSpec("3").Items(
+                        X.TextField().ID("TF_EnableCount").FieldLabel("有效明细条目").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true),
+                        X.TextField().ID("TF_Sum").FieldLabel("收款合计").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true),
+                        X.TextField().ID("TF_DisableCount").FieldLabel("作废条目").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true))))
         .TopBar(X.Toolbar().Items(
             X.DateField().ID("DF_BeginTime").FieldLabel("开始时间").Format("yyyy-MM-dd").LabelWidth(60).Width(180)
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
@@ -168,6 +143,9 @@
             X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
             X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
-            X.Button().Text("删除").Width(80).Icon(Icon.Delete).Listeners(ls => ls.Click.Fn = "DeleteRecord"),
-            X.Button().Text("清空输入").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
+            X.Button().Text("还款").Width(80).Icon(Icon.ShapeMoveBack),
+            X.Button().Text("作废").Width(80).Icon(Icon.DateDelete),
+            X.Button().Text("恢复").Width(80).Icon(Icon.Accept),
+            X.Button().Text("合计").Width(80).Icon(Icon.Sum).Listeners(ls => ls.Click.Fn = "SumCount"),
+            X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
             X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))

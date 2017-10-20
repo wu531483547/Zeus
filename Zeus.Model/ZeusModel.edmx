@@ -58,6 +58,36 @@
           <Property Name="F_DeleteMark" Type="bit" />
           <Property Name="F_Remakes" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="A_Receivables">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_SKDH" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CLLX" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_CLLB" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_MH" Type="bit" />
+          <Property Name="F_MZ" Type="bit" />
+          <Property Name="F_ZX" Type="bit" />
+          <Property Name="F_ZZL" Type="bit" />
+          <Property Name="F_KDH" Type="bit" />
+          <Property Name="F_RS" Type="bit" />
+          <Property Name="F_SFJE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="F_JEDX" Type="nvarchar" MaxLength="200" />
+          <Property Name="F_SKRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_JKRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_JZZT" Type="bit" />
+          <Property Name="F_HKSJ" Type="datetime" />
+          <Property Name="F_ZFZT" Type="bit" />
+          <Property Name="F_CreatorTime" Type="datetime" />
+          <Property Name="F_CreatorUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_LastModifyTime" Type="datetime" />
+          <Property Name="F_LastModifyUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteTime" Type="datetime" />
+          <Property Name="F_DeleteUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="F_DeleteMark" Type="bit" />
+          <Property Name="F_Remakes" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Sys_Area">
           <Key>
             <PropertyRef Name="F_Id" />
@@ -367,6 +397,7 @@
         </EntityType>
         <EntityContainer Name="ZeusModelStoreContainer">
           <EntitySet Name="A_CarCheck" EntityType="Self.A_CarCheck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_Receivables" EntityType="Self.A_Receivables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_Area" EntityType="Self.Sys_Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_DbBackup" EntityType="Self.Sys_DbBackup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_FilterIP" EntityType="Self.Sys_FilterIP" Schema="dbo" store:Type="Tables" />
@@ -707,6 +738,7 @@
           <EntitySet Name="Sys_User" EntityType="Self.Sys_User" />
           <EntitySet Name="Sys_UserLogOn" EntityType="Self.Sys_UserLogOn" />
           <EntitySet Name="A_CarCheck" EntityType="ZeusModel.A_CarCheck" />
+          <EntitySet Name="A_Receivables" EntityType="ZeusModel.A_Receivables" />
         </EntityContainer>
         <EntityType Name="A_CarCheck">
           <Key>
@@ -760,6 +792,36 @@
           <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="F_DeleteMark" Type="Boolean" />
           <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="A_Receivables">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_SKDH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CLLX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CLLB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MH" Type="Boolean" />
+          <Property Name="F_MZ" Type="Boolean" />
+          <Property Name="F_ZX" Type="Boolean" />
+          <Property Name="F_ZZL" Type="Boolean" />
+          <Property Name="F_KDH" Type="Boolean" />
+          <Property Name="F_RS" Type="Boolean" />
+          <Property Name="F_SFJE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_JEDX" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_SKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_JKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_JZZT" Type="Boolean" />
+          <Property Name="F_HKSJ" Type="DateTime" Precision="3" />
+          <Property Name="F_ZFZT" Type="Boolean" />
+          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
+          <Property Name="F_CreatorUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LastModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="F_DeleteUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Boolean" />
+          <Property Name="F_Remakes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1137,6 +1199,37 @@
                 <ScalarProperty Name="F_3" ColumnName="F_3" />
                 <ScalarProperty Name="F_2" ColumnName="F_2" />
                 <ScalarProperty Name="F_1" ColumnName="F_1" />
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_Receivables">
+            <EntityTypeMapping TypeName="ZeusModel.A_Receivables">
+              <MappingFragment StoreEntitySet="A_Receivables">
+                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
+                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
+                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
+                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
+                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
+                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
+                <ScalarProperty Name="F_ZFZT" ColumnName="F_ZFZT" />
+                <ScalarProperty Name="F_HKSJ" ColumnName="F_HKSJ" />
+                <ScalarProperty Name="F_JZZT" ColumnName="F_JZZT" />
+                <ScalarProperty Name="F_JKRY" ColumnName="F_JKRY" />
+                <ScalarProperty Name="F_SKRY" ColumnName="F_SKRY" />
+                <ScalarProperty Name="F_JEDX" ColumnName="F_JEDX" />
+                <ScalarProperty Name="F_SFJE" ColumnName="F_SFJE" />
+                <ScalarProperty Name="F_RS" ColumnName="F_RS" />
+                <ScalarProperty Name="F_KDH" ColumnName="F_KDH" />
+                <ScalarProperty Name="F_ZZL" ColumnName="F_ZZL" />
+                <ScalarProperty Name="F_ZX" ColumnName="F_ZX" />
+                <ScalarProperty Name="F_MZ" ColumnName="F_MZ" />
+                <ScalarProperty Name="F_MH" ColumnName="F_MH" />
+                <ScalarProperty Name="F_CLLB" ColumnName="F_CLLB" />
+                <ScalarProperty Name="F_CLLX" ColumnName="F_CLLX" />
+                <ScalarProperty Name="F_SKDH" ColumnName="F_SKDH" />
                 <ScalarProperty Name="F_Id" ColumnName="F_Id" />
               </MappingFragment>
             </EntityTypeMapping>

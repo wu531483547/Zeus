@@ -28,7 +28,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using Zeus.Core;
 using Zeus.IRepository.Routine;
 using Zeus.Model;
@@ -78,142 +77,40 @@ namespace Zeus.Application.Routine
             {
                 carcheckEntity.F_5 = carcheckDic["F_5"].Trim();
             }
-            if (carcheckDic.ContainsKey("F_6"))
-            {
-                carcheckEntity.F_6 = true;
-            }
-            if (carcheckDic.ContainsKey("F_7"))
-            {
-                carcheckEntity.F_7 = true;
-            }
-            if (carcheckDic.ContainsKey("F_8"))
-            {
-                carcheckEntity.F_8 = true;
-            }
-            if (carcheckDic.ContainsKey("F_9"))
-            {
-                carcheckEntity.F_9 = true;
-            }
-            if (carcheckDic.ContainsKey("F_10"))
-            {
-                carcheckEntity.F_10 = true;
-            }
-            if (carcheckDic.ContainsKey("F_11"))
-            {
-                carcheckEntity.F_11 = true;
-            }
-            if (carcheckDic.ContainsKey("F_12"))
-            {
-                carcheckEntity.F_12 = true;
-            }
-            if (carcheckDic.ContainsKey("F_13"))
-            {
-                carcheckEntity.F_13 = true;
-            }
-            if (carcheckDic.ContainsKey("F_14"))
-            {
-                carcheckEntity.F_14 = true;
-            }
-            if (carcheckDic.ContainsKey("F_15"))
-            {
-                carcheckEntity.F_15 = true;
-            }
-            if (carcheckDic.ContainsKey("F_16"))
-            {
-                carcheckEntity.F_16 = true;
-            }
-            if (carcheckDic.ContainsKey("F_17"))
-            {
-                carcheckEntity.F_17 = true;
-            }
-            if (carcheckDic.ContainsKey("F_18"))
-            {
-                carcheckEntity.F_18 = true;
-            }
-            if (carcheckDic.ContainsKey("F_19"))
-            {
-                carcheckEntity.F_19 = true;
-            }
-            if (carcheckDic.ContainsKey("F_20"))
-            {
-                carcheckEntity.F_20 = true;
-            }
-            if (carcheckDic.ContainsKey("F_21"))
-            {
-                carcheckEntity.F_21 = true;
-            }
-            if (carcheckDic.ContainsKey("F_22"))
-            {
-                carcheckEntity.F_22 = true;
-            }
-            if (carcheckDic.ContainsKey("F_23"))
-            {
-                carcheckEntity.F_23 = true;
-            }
-            if (carcheckDic.ContainsKey("F_24"))
-            {
-                carcheckEntity.F_24 = true;
-            }
-            if (carcheckDic.ContainsKey("F_25"))
-            {
-                carcheckEntity.F_25 = true;
-            }
-            if (carcheckDic.ContainsKey("F_26"))
-            {
-                carcheckEntity.F_26 = true;
-            }
-            if (carcheckDic.ContainsKey("F_27"))
-            {
-                carcheckEntity.F_27 = true;
-            }
-            if (carcheckDic.ContainsKey("F_28"))
-            {
-                carcheckEntity.F_28 = true;
-            }
-            if (carcheckDic.ContainsKey("F_29"))
-            {
-                carcheckEntity.F_29 = true;
-            }
-            if (carcheckDic.ContainsKey("F_30"))
-            {
-                carcheckEntity.F_30 = true;
-            }
-            if (carcheckDic.ContainsKey("F_31"))
-            {
-                carcheckEntity.F_31 = true;
-            }
-            if (carcheckDic.ContainsKey("F_32"))
-            {
-                carcheckEntity.F_32 = true;
-            }
-            if (carcheckDic.ContainsKey("F_33"))
-            {
-                carcheckEntity.F_33 = true;
-            }
-            if (carcheckDic.ContainsKey("F_34"))
-            {
-                carcheckEntity.F_34 = true;
-            }
-            if (carcheckDic.ContainsKey("F_35"))
-            {
-                carcheckEntity.F_35 = true;
-            }
-            if (carcheckDic.ContainsKey("F_36"))
-            {
-                carcheckEntity.F_36 = true;
-            }
-            if (carcheckDic.ContainsKey("F_37"))
-            {
-                carcheckEntity.F_37 = true;
-            }
-            if (carcheckDic.ContainsKey("F_38"))
-            {
-                carcheckEntity.F_38 = true;
-            }
-            if (carcheckDic.ContainsKey("F_39"))
-            {
-                carcheckEntity.F_39 = true;
-            }
+            carcheckEntity.F_6 = carcheckDic.ContainsKey("F_6") == true ? true : false;
+            carcheckEntity.F_7 = carcheckDic.ContainsKey("F_7") == true ? true : false;
+            carcheckEntity.F_8 = carcheckDic.ContainsKey("F_8") == true ? true : false;
+            carcheckEntity.F_9 = carcheckDic.ContainsKey("F_9") == true ? true : false;
+            carcheckEntity.F_10 = carcheckDic.ContainsKey("F_10") == true ? true : false;
+            carcheckEntity.F_11 = carcheckDic.ContainsKey("F_11") == true ? true : false;
+            carcheckEntity.F_12 = carcheckDic.ContainsKey("F_12") == true ? true : false;
+            carcheckEntity.F_13 = carcheckDic.ContainsKey("F_13") == true ? true : false;
+            carcheckEntity.F_14 = carcheckDic.ContainsKey("F_14") == true ? true : false;
+            carcheckEntity.F_15 = carcheckDic.ContainsKey("F_15") == true ? true : false;
+            carcheckEntity.F_16 = carcheckDic.ContainsKey("F_16") == true ? true : false;
+            carcheckEntity.F_17 = carcheckDic.ContainsKey("F_17") == true ? true : false;
+            carcheckEntity.F_18 = carcheckDic.ContainsKey("F_18") == true ? true : false;
+            carcheckEntity.F_19 = carcheckDic.ContainsKey("F_19") == true ? true : false;
+            carcheckEntity.F_20 = carcheckDic.ContainsKey("F_20") == true ? true : false;
+            carcheckEntity.F_21 = carcheckDic.ContainsKey("F_21") == true ? true : false;
+            carcheckEntity.F_22 = carcheckDic.ContainsKey("F_22") == true ? true : false;
+            carcheckEntity.F_23 = carcheckDic.ContainsKey("F_23") == true ? true : false;
+            carcheckEntity.F_24 = carcheckDic.ContainsKey("F_24") == true ? true : false;
+            carcheckEntity.F_25 = carcheckDic.ContainsKey("F_25") == true ? true : false;
+            carcheckEntity.F_26 = carcheckDic.ContainsKey("F_26") == true ? true : false;
+            carcheckEntity.F_27 = carcheckDic.ContainsKey("F_27") == true ? true : false;
+            carcheckEntity.F_28 = carcheckDic.ContainsKey("F_28") == true ? true : false;
+            carcheckEntity.F_29 = carcheckDic.ContainsKey("F_29") == true ? true : false;
+            carcheckEntity.F_30 = carcheckDic.ContainsKey("F_30") == true ? true : false;
+            carcheckEntity.F_31 = carcheckDic.ContainsKey("F_31") == true ? true : false;
+            carcheckEntity.F_32 = carcheckDic.ContainsKey("F_32") == true ? true : false;
+            carcheckEntity.F_33 = carcheckDic.ContainsKey("F_33") == true ? true : false;
+            carcheckEntity.F_34 = carcheckDic.ContainsKey("F_34") == true ? true : false;
+            carcheckEntity.F_35 = carcheckDic.ContainsKey("F_35") == true ? true : false;
+            carcheckEntity.F_36 = carcheckDic.ContainsKey("F_36") == true ? true : false;
+            carcheckEntity.F_37 = carcheckDic.ContainsKey("F_37") == true ? true : false;
+            carcheckEntity.F_38 = carcheckDic.ContainsKey("F_38") == true ? true : false;
+            carcheckEntity.F_39 = carcheckDic.ContainsKey("F_39") == true ? true : false;
             if (carcheckDic.ContainsKey("F_Remakes"))
             {
                 carcheckEntity.F_Remakes = carcheckDic["F_Remakes"].Trim();

@@ -508,7 +508,8 @@
     <Content Include="Areas\SystemManage\Views\ItemsType\Index.cshtml" />
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
-    <Content Include="Resource\DbBackup\201710180656382720.bak" />
+    <Content Include="Areas\Routine\Views\Receivables\Print.cshtml" />
+    <Content Include="Resource\DbBackup\201710201511345927.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

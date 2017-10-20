@@ -39,5 +39,6 @@ namespace Zeus.Model
         public virtual DbSet<Sys_User> Sys_User { get; set; }
         public virtual DbSet<Sys_UserLogOn> Sys_UserLogOn { get; set; }
         public virtual DbSet<A_CarCheck> A_CarCheck { get; set; }
+        public virtual DbSet<A_Receivables> A_Receivables { get; set; }
     }
 }
