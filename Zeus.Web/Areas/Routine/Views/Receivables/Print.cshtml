@@ -16,10 +16,28 @@
     <script src="~/Content/js/jqprint/jQuery.print.js"></script>
     <script type="text/javascript">
         var keyValue = $.request("keyValue");
+        $(function () {
+            $.ajax({
+                url: "/Routine/Receivables/GetSingle",
+                data: { keyValue: keyValue },
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                }
+            });
+            $("#D_Receivables").print({
+                mediaPrint: false,
+                iframe: true,
+                noPrintSelector: ".avoid-this",
+                prepend: "",
+                append: "",
+                deferred: $.Deferred().done(function () { })
+            });
+        });
     </script>
 </head>
 <body>
-    <div>
+    <div id="D_Receivables">
     </div>
 </body>
 </html>
