@@ -44,7 +44,7 @@ namespace Zeus.Application.Routine
             EndTime = EndTime.AddDays(1);
             int iTake = sTake.ToInt();
             return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
-            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).Take(iTake).ToList();
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderByDescending(t => t.F_CreatorTime).Take(iTake).ToList();
         }
         public A_CarCheck GetSingle(string keyValue)
         {

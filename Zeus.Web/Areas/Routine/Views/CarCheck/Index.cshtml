@@ -109,29 +109,42 @@
                 this.up('form').getForm().loadRecord(row[0]);
             }
         };
+        var R_IsNewCar = function (value, cellmeta, r) {
+            if (r.data.F_6) {
+                cellmeta.css = 'itemColor';
+            }
+            return value;
+        };
     </script>
+    <style type="text/css">
+        .itemColor {
+            background-color:greenyellow;
+        }
+    </style>
 }
 @(X.Viewport().Layout(LayoutType.Fit).Items(
         X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
-            X.GridPanel().ID("GP_Left").Region(Region.West).Width(380)
+            X.GridPanel().ID("GP_Left").Region(Region.West).Width(460)
             .StyleSpec("border:1px solid #DFDFDF;border-left:0px;border-right:0px;")
             .Store(X.Store().ID("S_Left").Parameters(new
             {
                 BeginTime = JRawValue.From("App.DF_BeginTime.getValue() == null ? null : App.DF_BeginTime.getValue()"),
                 EndTime = JRawValue.From("App.DF_EndTime.getValue() == null ? null : App.DF_EndTime.getValue()"),
-                Take = JRawValue.From("App.CB_Take.getValue() == null ? null : App.CB_Take.getValue()")                
+                Take = JRawValue.From("App.CB_Take.getValue() == null ? null : App.CB_Take.getValue()")
             }
             ).Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
             .Reader(X.JsonReader().RootProperty("data").TotalProperty("total")))).ColumnModel(
                 X.RowNumbererColumn().Align(Alignment.Center).Text("序号").Width(50),
                 X.Column().Text("识别代号").DataIndex("F_1").Filter(X.StringFilter().EmptyText("输入车辆识别代号")).Width(180),
+                X.Column().Text("是否新车").DataIndex("F_6").Filter(X.StringFilter().EmptyText("是否新车")).Width(80)
+                .Renderer("R_IsNewCar"),
                 X.DateColumn().Text("录入时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150))
             .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
             .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询")).Listeners(l => l.SelectionChange.Fn = "SelectedRecord"),
             X.FormPanel().ID("FP_Right").StyleSpec("border:1px solid #DFDFDF;border-right:0px;").AutoScroll(true)
             .Layout(LayoutType.Form).Region(Region.Center).BodyStyle("overflow-x:visible;overflow-y:hidden").Items(
                 X.FieldSet().Title("基本信息").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
-                .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).Collapsible(true).PaddingSpec("3").Items(
+                .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).PaddingSpec("3").Items(
                     X.TextField().FieldLabel("识别代码").Name("F_1").MarginSpec("10px 10px 0px 0px")
                     .AllowBlank(false).AutoFocus(true).MaxLength(17).MinLength(17),
                     X.ComboBox().FieldLabel("号牌类型").Name("F_2").Text("蓝牌").AllowBlank(false).
@@ -191,7 +204,7 @@
                         X.ListItem().Text("其他号牌")),
                     X.TextField().FieldLabel("备注说明").Name("F_Remakes").MarginSpec("10px 10px 10px 0px")),
                 X.FieldSet().Title("业务类型").LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table)
-                .Collapsible(true).PaddingSpec("3").Items(
+                .PaddingSpec("3").Items(
                     X.Checkbox().BoxLabel("注册登记").Name("F_6").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("转入").Name("F_7").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("转移登记").Name("F_8").MarginSpec("10px 10px 0px 0px"),
@@ -209,7 +222,7 @@
                     X.Checkbox().BoxLabel("监销").Name("F_20").MarginSpec("20px 10px 10px 0px"),
                     X.Checkbox().BoxLabel("其他").Name("F_21").MarginSpec("20px 10px 10px 0px")),
                 X.FieldSet().Title("检测项目").LayoutConfig(new TableLayoutConfig() { Columns = 4 }).Layout(LayoutType.Table)
-                .Collapsible(true).PaddingSpec("3").Items(
+                .PaddingSpec("3").Items(
                     X.Checkbox().BoxLabel("车辆识别代号").Name("F_22").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("发动机型号/号码").Name("F_23").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("车身品牌/型号").Name("F_24").MarginSpec("10px 10px 0px 0px"),
@@ -236,12 +249,15 @@
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
              X.ComboBox().ID("CB_Take").Width(60).Text("5").Items(
-                        X.ListItem().Text("5"),
-                        X.ListItem().Text("10"),
-                        X.ListItem().Text("20"),
-                        X.ListItem().Text("50"),
-                        X.ListItem().Text("100"),
-                        X.ListItem().Text("200"))
+                    X.ListItem().Text("2000"),
+                    X.ListItem().Text("1000"),
+                    X.ListItem().Text("500"),
+                    X.ListItem().Text("200"),
+                    X.ListItem().Text("100"),
+                    X.ListItem().Text("50"),
+                    X.ListItem().Text("20"),
+                    X.ListItem().Text("10"),
+                    X.ListItem().Text("5"))
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
             X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
