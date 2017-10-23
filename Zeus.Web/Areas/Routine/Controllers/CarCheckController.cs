@@ -52,5 +52,21 @@ namespace Zeus.Web.Areas.Routine.Controllers
         {
             return View();
         }
+
+        #region 获取合计信息
+        /// <summary>
+        /// 获取合计信息
+        /// </summary>
+        /// <param name="beginDate">起始日期</param>
+        /// <param name="endDate">截止日期</param>
+        /// <returns></returns>
+        [HttpGet]
+        [HandlerAjaxOnly]
+        public ActionResult GetSumInfo(DateTime beginDate, DateTime endDate)
+        {
+            var data = carcheckApp.GetSumInfo(beginDate, endDate);
+            return Content(data.ToJson());
+        }
+        #endregion
     }
 }

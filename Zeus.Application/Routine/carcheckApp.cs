@@ -136,5 +136,18 @@ namespace Zeus.Application.Routine
             QrCode QC = new QrCode();
             QC.CreateCode_Choose("CG" + carNumber, "Byte", "L", 0, 4);
         }
+
+        public Dictionary<string, string> GetSumInfo(DateTime BeginTime, DateTime EndTime)
+        {
+            EndTime = EndTime.AddDays(1);
+            var vList = new Dictionary<string, string>();
+            var vNewCarCount = service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime && t.F_6 == true).ToList();
+            var vOldCarCount = service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime && t.F_6 == false).ToList();
+            vList.Add("vNewCarCount", vNewCarCount.Count.ToString());
+            vList.Add("vOldCarCount", vOldCarCount.Count.ToString());
+            return vList;
+        }
     }
 }

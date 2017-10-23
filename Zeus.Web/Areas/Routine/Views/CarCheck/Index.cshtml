@@ -115,6 +115,18 @@
             }
             return value;
         };
+        var SumCount = function () {
+            $.ajax({
+                url: "/Routine/CarCheck/GetSumInfo",
+                data: { beginDate: formatExtTime(App.DF_BeginTime.getValue()), endDate: formatExtTime(App.DF_EndTime.getValue()) },
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    App.TF_NewCarCount.setValue(data.vNewCarCount + "辆");
+                    App.TF_OldCarCount.setValue(data.vOldCarCount + "辆");
+                }
+            });
+        };
     </script>
     <style type="text/css">
         .itemColor {
@@ -240,7 +252,11 @@
                     X.Checkbox().BoxLabel("应急出口/应急锤、乘客门").Name("F_36").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("外部标识/文字、喷涂").Name("F_37").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("标志灯具、警报器").Name("F_38").MarginSpec("20px 10px 10px 0px"),
-                    X.Checkbox().BoxLabel("检验合格证明").Name("F_39").MarginSpec("20px 10px 10px 0px"))))
+                    X.Checkbox().BoxLabel("检验合格证明").Name("F_39").MarginSpec("20px 10px 10px 0px")),
+                X.FieldSet().Title("区间合计").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
+                 .LayoutConfig(new TableLayoutConfig() { Columns = 2 }).Layout(LayoutType.Table).PaddingSpec("3").Items(
+                        X.TextField().ID("TF_NewCarCount").FieldLabel("新车数量").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true),
+                        X.TextField().ID("TF_OldCarCount").FieldLabel("旧车数量").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true))))
         .TopBar(X.Toolbar().Items(
             X.DateField().ID("DF_BeginTime").FieldLabel("开始时间").Format("yyyy-MM-dd").LabelWidth(60).Width(180)
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
@@ -263,5 +279,6 @@
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
             X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
             X.Button().Text("删除").Width(80).Icon(Icon.Delete).Listeners(ls => ls.Click.Fn = "DeleteRecord"),
+            X.Button().Text("合计").Icon(Icon.Sum).Width(80).Listeners(ls => ls.Click.Fn = "SumCount"),
             X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
             X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))
