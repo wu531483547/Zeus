@@ -383,6 +383,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="Resource\20171021.sql" />
     <Content Include="Resource\Temp.jpg" />
     <Content Include="TextTemplate1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -509,8 +510,8 @@
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Print.cshtml" />
-    <Content Include="Resource\DbBackup\201710210920335879.bak" />
     <None Include="Properties\PublishProfiles\Zeus.pubxml" />
+    <Content Include="Resource\DbBackup\201710231021181466.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
