@@ -39,11 +39,12 @@ namespace Zeus.Application.Routine
     {
         private ICarCheckRepository service = new CarCheckRepository();
 
-        public List<A_CarCheck> GetList(DateTime BeginTime, DateTime EndTime)
+        public List<A_CarCheck> GetList(DateTime BeginTime, DateTime EndTime,string sTake)
         {
             EndTime = EndTime.AddDays(1);
+            int iTake = sTake.ToInt();
             return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
-            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).ToList();
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).Take(iTake).ToList();
         }
         public A_CarCheck GetSingle(string keyValue)
         {
@@ -111,6 +112,10 @@ namespace Zeus.Application.Routine
             carcheckEntity.F_37 = carcheckDic.ContainsKey("F_37") == true ? true : false;
             carcheckEntity.F_38 = carcheckDic.ContainsKey("F_38") == true ? true : false;
             carcheckEntity.F_39 = carcheckDic.ContainsKey("F_39") == true ? true : false;
+            if (carcheckDic.ContainsKey("F_40"))
+            {
+                carcheckEntity.F_40 = carcheckDic["F_40"].Trim();
+            }
             if (carcheckDic.ContainsKey("F_Remakes"))
             {
                 carcheckEntity.F_Remakes = carcheckDic["F_Remakes"].Trim();

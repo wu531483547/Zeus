@@ -84,6 +84,96 @@
                 }
             });
         };
+        var RepaymentRecord = function () {
+            $.loading(true, "正在提交数据...");
+            $.ajax({
+                url: "/Routine/Receivables/RepaymentRecord",
+                loading: "正在提交数据...",
+                type: "post",
+                dataType: "json",
+                data: {
+                    __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                    keyValue: App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id
+                },
+                success: function (result) {
+                    if (result.state == "success") {
+                        //$.modalMsg(result.message, result.state);
+                        App.FP_Right.getForm().reset();
+                        App.GP_Left.store.reload();
+                        App.GP_Left.getSelectionModel().clearSelections();
+                        App.GP_Left.getView().refresh();
+                    } else {
+                        $.modalAlert(result.message, result.state);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $.modalMsg(errorThrown, "error");
+                },
+                complete: function () {
+                    $.loading(false);
+                }
+            });
+        };
+        var InvalidRecord = function () {
+            $.loading(true, "正在提交数据...");
+            $.ajax({
+                url: "/Routine/Receivables/InvalidRecord",
+                loading: "正在提交数据...",
+                type: "post",
+                dataType: "json",
+                data: {
+                    __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                    keyValue: App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id
+                },
+                success: function (result) {
+                    if (result.state == "success") {
+                        //$.modalMsg(result.message, result.state);
+                        App.FP_Right.getForm().reset();
+                        App.GP_Left.store.reload();
+                        App.GP_Left.getSelectionModel().clearSelections();
+                        App.GP_Left.getView().refresh();
+                    } else {
+                        $.modalAlert(result.message, result.state);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $.modalMsg(errorThrown, "error");
+                },
+                complete: function () {
+                    $.loading(false);
+                }
+            });
+        };
+        var RecoveryInvalidRecord = function () {
+            $.loading(true, "正在提交数据...");
+            $.ajax({
+                url: "/Routine/Receivables/RecoveryInvalidRecord",
+                loading: "正在提交数据...",
+                type: "post",
+                dataType: "json",
+                data: {
+                    __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
+                    keyValue: App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id
+                },
+                success: function (result) {
+                    if (result.state == "success") {
+                        //$.modalMsg(result.message, result.state);
+                        App.FP_Right.getForm().reset();
+                        App.GP_Left.store.reload();
+                        App.GP_Left.getSelectionModel().clearSelections();
+                        App.GP_Left.getView().refresh();
+                    } else {
+                        $.modalAlert(result.message, result.state);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $.modalMsg(errorThrown, "error");
+                },
+                complete: function () {
+                    $.loading(false);
+                }
+            });
+        };
     </script>
 }
 @(X.Viewport().Layout(LayoutType.Fit).Items(
@@ -108,7 +198,38 @@
                 .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).Collapsible(true).PaddingSpec("3").Items(
                     X.ComboBox().FieldLabel("车辆类型").Name("F_CLLX").Text("小型汽车").AllowBlank(false).Items(
                         X.ListItem().Text("大型汽车"),
-                        X.ListItem().Text("小型汽车")),
+                        X.ListItem().Text("小型汽车"),
+                        X.ListItem().Text("使馆汽车"),
+                        X.ListItem().Text("领馆汽车"),
+                        X.ListItem().Text("境外汽车"),
+                        X.ListItem().Text("外籍汽车"),
+                        X.ListItem().Text("普通摩托车"),
+                        X.ListItem().Text("轻便摩托车"),
+                        X.ListItem().Text("使馆摩托车"),
+                        X.ListItem().Text("领馆摩托车"),
+                        X.ListItem().Text("境外摩托车"),
+                        X.ListItem().Text("外籍摩托车"),
+                        X.ListItem().Text("低速车"),
+                        X.ListItem().Text("拖拉机"),
+                        X.ListItem().Text("挂车"),
+                        X.ListItem().Text("教练汽车"),
+                        X.ListItem().Text("教练摩托车"),
+                        X.ListItem().Text("试验汽车"),
+                        X.ListItem().Text("试验摩托车"),
+                        X.ListItem().Text("临时入境汽车"),
+                        X.ListItem().Text("临时入境摩托车"),
+                        X.ListItem().Text("临时行驶车"),
+                        X.ListItem().Text("警用汽车"),
+                        X.ListItem().Text("警用摩托"),
+                        X.ListItem().Text("原农机号牌"),
+                        X.ListItem().Text("香港入出境车"),
+                        X.ListItem().Text("澳门入出境车"),
+                        X.ListItem().Text("武警号牌"),
+                        X.ListItem().Text("军队号牌"),
+                        X.ListItem().Text("无号牌"),
+                        X.ListItem().Text("假号牌"),
+                        X.ListItem().Text("挪用号牌"),
+                        X.ListItem().Text("其他号牌")),
                     X.ComboBox().FieldLabel("车辆类别").Name("F_CLLB").Text("新车").AllowBlank(false).Items(
                         X.ListItem().Text("新车"),
                         X.ListItem().Text("旧车")),
@@ -143,9 +264,9 @@
             X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
             X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
-            X.Button().Text("还款").Width(80).Icon(Icon.ShapeMoveBack),
-            X.Button().Text("作废").Width(80).Icon(Icon.DateDelete),
-            X.Button().Text("恢复").Width(80).Icon(Icon.Accept),
-            X.Button().Text("合计").Width(80).Icon(Icon.Sum).Listeners(ls => ls.Click.Fn = "SumCount"),
-            X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
+            X.Button().Text("还款").Icon(Icon.ShapeMoveBack).Width(80).Listeners(ls => ls.Click.Fn = "RepaymentRecord"),
+            X.Button().Text("作废").Icon(Icon.DateDelete).Width(80).Listeners(ls => ls.Click.Fn = "InvalidRecord"),
+            X.Button().Text("恢复").Icon(Icon.Accept).Width(80).Listeners(ls => ls.Click.Fn = "RecoveryInvalidRecord"),
+            X.Button().Text("合计").Icon(Icon.Sum).Width(80).Listeners(ls => ls.Click.Fn = "SumCount"),
+            X.Button().Text("清空").Icon(Icon.Cancel).Width(80).OnClientClick("#{FP_Right}.reset();"),
             X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))

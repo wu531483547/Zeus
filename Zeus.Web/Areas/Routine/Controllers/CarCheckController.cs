@@ -14,9 +14,9 @@ namespace Zeus.Web.Areas.Routine.Controllers
 
         [HttpGet]
         [HandlerAjaxOnly]
-        public StoreResult GetList(DateTime BeginTime,DateTime EndTime)
+        public StoreResult GetList(DateTime BeginTime,DateTime EndTime,string Take)
         {
-            var data = carcheckApp.GetList(BeginTime, EndTime);
+            var data = carcheckApp.GetList(BeginTime, EndTime,Take);
             return this.Store(data, data.Count);
         }
 

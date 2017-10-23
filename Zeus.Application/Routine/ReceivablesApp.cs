@@ -53,11 +53,14 @@ namespace Zeus.Application.Routine
         {
             EndTime = EndTime.AddDays(1);
             var vList = new Dictionary<string,string>();
-            var vEnableCount = service.IQueryable().Count(t => t.F_DeleteMark == null);
-            var vDisableCount = service.IQueryable().Count(t => t.F_DeleteMark != null);
-            var vSum = service.IQueryable().Where(t => t.F_DeleteMark == null).Sum(t => t.F_SFJE);
-            vList.Add("vEnableCount", vEnableCount.ToString());
-            vList.Add("vDisableCount", vDisableCount.ToString());
+            var vEnableCount = service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime && t.F_DeleteMark == false).ToList();
+            var vDisableCount = service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime && t.F_DeleteMark == true).ToList();
+            var vSum = service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime && t.F_DeleteMark == false).Sum(t => t.F_SFJE);
+            vList.Add("vEnableCount", vEnableCount.Count.ToString());
+            vList.Add("vDisableCount", vDisableCount.Count.ToString());
             vList.Add("vSum", vSum.ToString()); 
             return vList;
         }
@@ -66,6 +69,47 @@ namespace Zeus.Application.Routine
         {
             service.Delete(t => t.F_Id == keyValue);
         }
+
+        public void RepaymentRecord(string keyValue)
+        {
+            if (!string.IsNullOrEmpty(keyValue))
+            {
+                A_Receivables receivableEntity = new A_Receivables();
+                receivableEntity.F_Id = keyValue;
+                receivableEntity.F_JZZT = false;
+                receivableEntity.F_HKSJ = DateTime.Now;
+                receivableEntity.Modify(keyValue);
+                service.Update(receivableEntity);
+            }
+        }
+
+        public void InvalidRecord(string keyValue)
+        {
+            if (!string.IsNullOrEmpty(keyValue))
+            {
+                A_Receivables receivableEntity = new A_Receivables();
+                receivableEntity.F_Id = keyValue;
+                receivableEntity.F_DeleteMark = true;
+                receivableEntity.F_DeleteTime = DateTime.Now;
+                receivableEntity.F_DeleteUserId = OperatorProvider.Provider.GetCurrent().UserId;
+                receivableEntity.Modify(keyValue);
+                service.Update(receivableEntity);
+            }
+        }
+
+        public void RecoveryInvalidRecord(string keyValue)
+        {
+            if (!string.IsNullOrEmpty(keyValue))
+            {
+                A_Receivables receivableEntity = new A_Receivables();
+                receivableEntity.F_Id = keyValue;
+                receivableEntity.F_DeleteMark = false;
+                receivableEntity.Modify(keyValue);
+                service.Update(receivableEntity);
+            }
+        }
+        
+
         public void SubmitSingle(Dictionary<string, string> receivablesDic, string keyValue)
         {
             A_Receivables receivableEntity = new A_Receivables();
@@ -104,6 +148,7 @@ namespace Zeus.Application.Routine
             {
                 receivableEntity.F_Remakes = receivablesDic["F_Remakes"].Trim();
             }
+            receivableEntity.F_DeleteMark = false;
             if (!string.IsNullOrEmpty(keyValue))
             {
                 receivableEntity.Modify(keyValue);

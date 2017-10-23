@@ -509,7 +509,8 @@
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Print.cshtml" />
-    <Content Include="Resource\DbBackup\201710201511345927.bak" />
+    <Content Include="Resource\DbBackup\201710210920335879.bak" />
+    <None Include="Properties\PublishProfiles\Zeus.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,11 +23,13 @@
                 dataType: "json",
                 async: false,
                 success: function (data) {
+                    debugger;
                     $("#L_F_1").text(data.F_1);
                     $("#L_F_2").text(data.F_2);
                     $("#L_F_3").text(data.F_3);
                     $("#T_CSYS").html(data.F_4);
                     $("#T_HDZRS").html(data.F_5);
+                    $("#T_CLLX").html(data.F_40);
                     var vYwlx, vF_6, vF_7, vF_8, vF_9, vF_10, vF_11, vF_12, vF_13, vF_14, vF_15, vF_16, vF_17, vF_18, vF_19, vF_20, vF_21;
                     var vArr = new Array();
                     vF_6 = data.F_6 ? "&radic;注册登记," : "注册登记,";
@@ -68,7 +70,7 @@
                     $("#T_CLSBDM").html(data.F_22 ? "&radic;" : "");
                     $("#T_FDJXH").html(data.F_23 ? "&radic;" : "");
                     $("#T_CSPPXH").html(data.F_24 ? "&radic;" : "");
-                    $("#T_CLLX").html(data.F_25 ? "&radic;" : "");
+                    //$("#T_CLLX").html(data.F_25 ? "&radic;" : "");
                     $("#T_HPCLWGXZ").html(data.F_26 ? "&radic;" : "");
                     $("#T_LTWHQK").html(data.F_27 ? "&radic;" : "");
                     $("#T_AQDSJJGP").html(data.F_28 ? "&radic;" : "");
@@ -695,7 +697,7 @@
                     <td class="xl7511993" style='border: 1px solid #000000'>车身反光标识</td>
                     <td class="xl6411993" style='border: 1px solid #000000' id="T_CSFGBS"></td>
                 </tr>
-                <tr style='mso-height-source: userset; border: 1px solid #000000'>
+                <tr style='mso-height-source: userset; border: 1px solid #000000' height="250">
                     <td colspan="5" class="auto-style1" width="414">
                         机 动 车 照 片<font class="font511993">
                             <br>

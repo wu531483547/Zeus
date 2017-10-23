@@ -4,7 +4,7 @@
     var X = Html.X();
 }
 @section header{
-<script src="~/Content/js/Zeus.js"></script>
+    <script src="~/Content/js/Zeus.js"></script>
     <script type="text/javascript">
         var AddRecord = function () {
             this.up('form').getForm().reset();
@@ -118,7 +118,8 @@
             .Store(X.Store().ID("S_Left").Parameters(new
             {
                 BeginTime = JRawValue.From("App.DF_BeginTime.getValue() == null ? null : App.DF_BeginTime.getValue()"),
-                EndTime = JRawValue.From("App.DF_EndTime.getValue() == null ? null : App.DF_EndTime.getValue()")
+                EndTime = JRawValue.From("App.DF_EndTime.getValue() == null ? null : App.DF_EndTime.getValue()"),
+                Take = JRawValue.From("App.CB_Take.getValue() == null ? null : App.CB_Take.getValue()")                
             }
             ).Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
             .Reader(X.JsonReader().RootProperty("data").TotalProperty("total")))).ColumnModel(
@@ -154,7 +155,41 @@
                         X.ListItem().Text("粉色"),
                         X.ListItem().Text("紫色")),
                     X.NumberField().FieldLabel("核载人数").Name("F_5").MarginSpec("10px 10px 10px 0px").AllowBlank(false).MinValue(0),
-                    X.TextField().FieldLabel("备注说明").Name("F_Remakes").MarginSpec("10px 10px 0px 0px")),
+                    X.ComboBox().FieldLabel("车辆类型").Name("F_40").MarginSpec("10px 10px 10px 0px").Text("小型汽车").AllowBlank(false).Items(
+                        X.ListItem().Text("大型汽车"),
+                        X.ListItem().Text("小型汽车"),
+                        X.ListItem().Text("使馆汽车"),
+                        X.ListItem().Text("领馆汽车"),
+                        X.ListItem().Text("境外汽车"),
+                        X.ListItem().Text("外籍汽车"),
+                        X.ListItem().Text("普通摩托车"),
+                        X.ListItem().Text("轻便摩托车"),
+                        X.ListItem().Text("使馆摩托车"),
+                        X.ListItem().Text("领馆摩托车"),
+                        X.ListItem().Text("境外摩托车"),
+                        X.ListItem().Text("外籍摩托车"),
+                        X.ListItem().Text("低速车"),
+                        X.ListItem().Text("拖拉机"),
+                        X.ListItem().Text("挂车"),
+                        X.ListItem().Text("教练汽车"),
+                        X.ListItem().Text("教练摩托车"),
+                        X.ListItem().Text("试验汽车"),
+                        X.ListItem().Text("试验摩托车"),
+                        X.ListItem().Text("临时入境汽车"),
+                        X.ListItem().Text("临时入境摩托车"),
+                        X.ListItem().Text("临时行驶车"),
+                        X.ListItem().Text("警用汽车"),
+                        X.ListItem().Text("警用摩托"),
+                        X.ListItem().Text("原农机号牌"),
+                        X.ListItem().Text("香港入出境车"),
+                        X.ListItem().Text("澳门入出境车"),
+                        X.ListItem().Text("武警号牌"),
+                        X.ListItem().Text("军队号牌"),
+                        X.ListItem().Text("无号牌"),
+                        X.ListItem().Text("假号牌"),
+                        X.ListItem().Text("挪用号牌"),
+                        X.ListItem().Text("其他号牌")),
+                    X.TextField().FieldLabel("备注说明").Name("F_Remakes").MarginSpec("10px 10px 10px 0px")),
                 X.FieldSet().Title("业务类型").LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table)
                 .Collapsible(true).PaddingSpec("3").Items(
                     X.Checkbox().BoxLabel("注册登记").Name("F_6").MarginSpec("10px 10px 0px 0px"),
@@ -178,7 +213,7 @@
                     X.Checkbox().BoxLabel("车辆识别代号").Name("F_22").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("发动机型号/号码").Name("F_23").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("车身品牌/型号").Name("F_24").MarginSpec("10px 10px 0px 0px"),
-                    X.Checkbox().BoxLabel("车辆类型").Name("F_25").MarginSpec("10px 10px 0px 0px"),
+                    //X.Checkbox().BoxLabel("车辆类型").Name("F_25").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("号牌/车辆外观形状").Name("F_26").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("轮胎完好情况").Name("F_27").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("安全带、三角警告牌").Name("F_28").MarginSpec("20px 10px 0px 0px"),
@@ -199,6 +234,14 @@
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
             X.DateField().ID("DF_EndTime").FieldLabel("截至时间").Format("yyyy-MM-dd").LabelWidth(60).Width(180)
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
+            .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
+             X.ComboBox().ID("CB_Take").Width(60).Text("5").Items(
+                        X.ListItem().Text("5"),
+                        X.ListItem().Text("10"),
+                        X.ListItem().Text("20"),
+                        X.ListItem().Text("50"),
+                        X.ListItem().Text("100"),
+                        X.ListItem().Text("200"))
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
             X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),

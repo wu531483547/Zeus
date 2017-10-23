@@ -49,6 +49,7 @@
           <Property Name="F_37" Type="bit" />
           <Property Name="F_38" Type="bit" />
           <Property Name="F_39" Type="bit" />
+          <Property Name="F_40" Type="nvarchar" MaxLength="100" />
           <Property Name="F_CreatorTime" Type="datetime" />
           <Property Name="F_CreatorUserId" Type="nvarchar(max)" />
           <Property Name="F_LastModifyTime" Type="datetime" />
@@ -792,6 +793,7 @@
           <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="F_DeleteMark" Type="Boolean" />
           <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_40" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="A_Receivables">
           <Key>
@@ -1152,6 +1154,7 @@
           <EntitySetMapping Name="A_CarCheck">
             <EntityTypeMapping TypeName="ZeusModel.A_CarCheck">
               <MappingFragment StoreEntitySet="A_CarCheck">
+                <ScalarProperty Name="F_40" ColumnName="F_40" />
                 <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
                 <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
                 <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
