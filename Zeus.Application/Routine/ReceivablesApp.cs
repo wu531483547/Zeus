@@ -39,11 +39,12 @@ namespace Zeus.Application.Routine
     {
         private IReceivablesRepository service = new ReceivablesRepository();
 
-        public List<A_Receivables> GetList(DateTime BeginTime, DateTime EndTime)
+        public List<A_Receivables> GetList(DateTime BeginTime, DateTime EndTime, string sTake)
         {
             EndTime = EndTime.AddDays(1);
+            int iTake = sTake.ToInt();
             return service.IQueryable().Where(t => DbFunctions.TruncateTime(t.F_CreatorTime) >= BeginTime
-            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).ToList();
+            && DbFunctions.TruncateTime(t.F_CreatorTime) <= EndTime).OrderBy(t => t.F_CreatorTime).Take(iTake).ToList();
         }
         public A_Receivables GetSingle(string keyValue)
         {

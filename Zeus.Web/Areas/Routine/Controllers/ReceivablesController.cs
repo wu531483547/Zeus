@@ -21,9 +21,9 @@ namespace Zeus.Web.Areas.Routine.Controllers
         /// <returns></returns>
         [HttpGet]
         [HandlerAjaxOnly]
-        public StoreResult GetList(DateTime BeginTime, DateTime EndTime)
+        public StoreResult GetList(DateTime BeginTime, DateTime EndTime,string Take)
         {
-            var data = receivableApp.GetList(BeginTime, EndTime);
+            var data = receivableApp.GetList(BeginTime, EndTime,Take);
             return this.Store(data, data.Count);
         }
         #endregion
