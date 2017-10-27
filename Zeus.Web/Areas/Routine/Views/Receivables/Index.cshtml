@@ -178,7 +178,7 @@
 }
 @(X.Viewport().Layout(LayoutType.Fit).Items(
         X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
-            X.GridPanel().ID("GP_Left").Region(Region.West).Width(380)
+            X.GridPanel().ID("GP_Left").Region(Region.West).Width(350)
             .StyleSpec("border:1px solid #DFDFDF;border-left:0px;border-right:0px;")
             .Store(X.Store().ID("S_Left").Parameters(new
             {
@@ -188,15 +188,16 @@
             ).Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
             .Reader(X.JsonReader().RootProperty("data").TotalProperty("total")))).ColumnModel(
                 X.RowNumbererColumn().Align(Alignment.Center).Text("序号").Width(50),
-                X.Column().Text("收款单号").DataIndex("F_SKDH").Filter(X.StringFilter().EmptyText("输入收款单号")).Width(180),
+                X.Column().Text("收款单号").DataIndex("F_SKDH").Filter(X.StringFilter().EmptyText("输入收款单号")).Width(150),
                 X.DateColumn().Text("收款时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150))
             .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
             .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询")).Listeners(l => l.SelectionChange.Fn = "SelectedRecord"),
             X.FormPanel().ID("FP_Right").StyleSpec("border:1px solid #DFDFDF;border-right:0px;").AutoScroll(true)
             .Layout(LayoutType.Form).Region(Region.Center).BodyStyle("overflow-x:visible;overflow-y:hidden").Items(
                 X.FieldSet().Title("收款明细").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
-                .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).Collapsible(true).PaddingSpec("3").Items(
-                    X.ComboBox().FieldLabel("车辆类型").Name("F_CLLX").Text("小型汽车").AllowBlank(false).Items(
+                .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 2 }).Collapsible(true).PaddingSpec("3").Items(
+                    X.ComboBox().FieldLabel("车辆类型").Name("F_CLLX").Text("小型汽车").MarginSpec("10px 0px 10px 0px")
+                    .AllowBlank(false).Items(
                         X.ListItem().Text("大型汽车"),
                         X.ListItem().Text("小型汽车"),
                         X.ListItem().Text("使馆汽车"),
@@ -232,41 +233,42 @@
                         X.ListItem().Text("其他号牌")),
                     X.ComboBox().FieldLabel("车辆类别").Name("F_CLLB").Text("新车").AllowBlank(false).Items(
                         X.ListItem().Text("新车"),
-                        X.ListItem().Text("旧车")),
+                        X.ListItem().Text("旧车")).MarginSpec("10px 0px 10px 0px"),
                     X.DateField().FieldLabel("收款时间").Format("yyyy-MM-dd HH:mm:ss").ReadOnly(true)
-                        .Text(@DateTime.Now.ToString()).AutoDataBind(true).Editable(false),
-                    X.NumberField().ID("NF_SFJE").FieldLabel("收费金额").Name("F_SFJE").AllowBlank(false).MinValue(0).MarginSpec("20px 0px 0px 0px")
-                    .Listeners(ls => ls.Change.Fn = "GetDXJE"),
-                    X.TextField().ID("TF_JEDX").FieldLabel("金额大写").Name("F_JEDX").MarginSpec("20px 0px 0px 0px").Editable(false).ReadOnly(true),
-                    X.Checkbox().BoxLabel("是否记账").BoxLabelAlign(BoxLabelAlign.Before).MarginSpec("20px 0px 0px 30px").Name("F_JZZT"),
-                    X.TextField().FieldLabel("借款人员").Name("F_JKRY").MarginSpec("20px 0px 20px 0px"),
-                    X.TextField().FieldLabel("备注").Name("F_Remakes").MarginSpec("20px 0px 20px 0px")),
-                X.FieldSet().Title("收款项目").LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table)
+                        .Text(@DateTime.Now.ToString()).AutoDataBind(true).Editable(false).MarginSpec("10px 0px 10px 0px"),
+                    X.NumberField().ID("NF_SFJE").FieldLabel("收费金额").Name("F_SFJE").AllowBlank(false).MinValue(0)
+                    .Listeners(ls => ls.Change.Fn = "GetDXJE").MarginSpec("10px 0px 10px 0px"),
+                    X.TextField().ID("TF_JEDX").FieldLabel("金额大写").Name("F_JEDX").Editable(false).ReadOnly(true).MarginSpec("10px 0px 10px 0px"),
+                    X.Checkbox().BoxLabel("是否记账:").BoxLabelAlign(BoxLabelAlign.Before).Name("F_JZZT").MarginSpec("10px 0px 10px 30px"),
+                    X.TextField().FieldLabel("借款人员").Name("F_JKRY").MarginSpec("10px 0px 10px 0px"),
+                    X.TextField().FieldLabel("备注").Name("F_Remakes").MarginSpec("10px 0px 10px 0px")),
+                X.FieldSet().Title("收款项目").LayoutConfig(new TableLayoutConfig() { Columns = 3 }).Layout(LayoutType.Table)
                     .Collapsible(true).PaddingSpec("3").Items(
-                        X.Checkbox().BoxLabel("磨号").InputWidth(30).BoxLabelAlign(BoxLabelAlign.Before).Name("F_MH").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("门字").BoxLabelAlign(BoxLabelAlign.Before).Name("F_MZ").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("照相").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZX").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("载重量").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZZL").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("扩大号").BoxLabelAlign(BoxLabelAlign.Before).Name("F_KDH").MarginSpec("20px 0px 20px 30px"),
-                        X.Checkbox().BoxLabel("人数").BoxLabelAlign(BoxLabelAlign.Before).Name("F_RS").MarginSpec("20px 0px 20px 30px")),
+                        X.Checkbox().BoxLabel("磨号").InputWidth(30).BoxLabelAlign(BoxLabelAlign.Before).Name("F_MH").MarginSpec("10px 0px 10px 30px"),
+                        X.Checkbox().BoxLabel("门字").BoxLabelAlign(BoxLabelAlign.Before).Name("F_MZ").MarginSpec("10px 0px 10px 30px"),
+                        X.Checkbox().BoxLabel("照相").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZX").MarginSpec("10px 0px 10px 30px"),
+                        X.Checkbox().BoxLabel("载重量").BoxLabelAlign(BoxLabelAlign.Before).Name("F_ZZL").MarginSpec("10px 0px 10px 30px"),
+                        X.Checkbox().BoxLabel("扩大号").BoxLabelAlign(BoxLabelAlign.Before).Name("F_KDH").MarginSpec("10px 0px 10px 30px"),
+                        X.Checkbox().BoxLabel("人数").BoxLabelAlign(BoxLabelAlign.Before).Name("F_RS").MarginSpec("10px 0px 10px 30px")),
                  X.FieldSet().Title("区间合计").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
-                 .LayoutConfig(new TableLayoutConfig() { Columns = 6 }).Layout(LayoutType.Table).Collapsible(true).PaddingSpec("3").Items(
-                        X.TextField().ID("TF_EnableCount").FieldLabel("有效明细条目").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true),
-                        X.TextField().ID("TF_Sum").FieldLabel("收款合计").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true),
-                        X.TextField().ID("TF_DisableCount").FieldLabel("作废条目").MarginSpec("20px 0px 20px 0px").Editable(false).ReadOnly(true))))
+                 .LayoutConfig(new TableLayoutConfig() { Columns = 2 }).Layout(LayoutType.Table).Collapsible(true).PaddingSpec("3").Items(
+                        X.TextField().ID("TF_EnableCount").FieldLabel("有效明细条目").MarginSpec("10px 0px 10px 0px").Editable(false).ReadOnly(true),
+                        X.TextField().ID("TF_Sum").FieldLabel("收款合计").MarginSpec("10px 0px 10px 0px").Editable(false).ReadOnly(true),
+                        X.TextField().ID("TF_DisableCount").FieldLabel("作废条目").MarginSpec("10px 0px 10px 0px").Editable(false).ReadOnly(true))))
         .TopBar(X.Toolbar().Items(
-            X.DateField().ID("DF_BeginTime").FieldLabel("开始时间").Format("yyyy-MM-dd").LabelWidth(60).Width(180)
+            X.DateField().ID("DF_BeginTime").Format("yyyy-MM-dd").Width(120)
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
-            X.DateField().ID("DF_EndTime").FieldLabel("截至时间").Format("yyyy-MM-dd").LabelWidth(60).Width(180)
+            X.Label().Text("至").Width(10),
+            X.DateField().ID("DF_EndTime").Format("yyyy-MM-dd").Width(120)
             .Margin(7).Text(@DateTime.Now.ToString()).MaxDate(@DateTime.Now).AutoDataBind(true).Editable(false)
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
-            X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
+            X.Button().Text("新增").Icon(Icon.Add).Listeners(ls => ls.Click.Fn = "AddRecord"),
             X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
-            X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
-            X.Button().Text("还款").Icon(Icon.ShapeMoveBack).Width(80).Listeners(ls => ls.Click.Fn = "RepaymentRecord"),
-            X.Button().Text("作废").Icon(Icon.DateDelete).Width(80).Listeners(ls => ls.Click.Fn = "InvalidRecord"),
-            X.Button().Text("恢复").Icon(Icon.Accept).Width(80).Listeners(ls => ls.Click.Fn = "RecoveryInvalidRecord"),
-            X.Button().Text("合计").Icon(Icon.Sum).Width(80).Listeners(ls => ls.Click.Fn = "SumCount"),
-            X.Button().Text("清空").Icon(Icon.Cancel).Width(80).OnClientClick("#{FP_Right}.reset();"),
-            X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))
+            X.Button().Text("打印").Icon(Icon.Printer).Listeners(ls => ls.Click.Fn = "PrintRecord"),
+            X.Button().Text("还款").Icon(Icon.ShapeMoveBack).Listeners(ls => ls.Click.Fn = "RepaymentRecord"),
+            X.Button().Text("合计").Icon(Icon.Sum).Listeners(ls => ls.Click.Fn = "SumCount"),
+            X.Button().Text("作废").Icon(Icon.DateDelete).Listeners(ls => ls.Click.Fn = "InvalidRecord"),
+            X.Button().Text("恢复").Icon(Icon.Accept).Listeners(ls => ls.Click.Fn = "RecoveryInvalidRecord"),
+            X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
+            X.Button().Text("刷新").Icon(Icon.Reload).OnClientClick("#{S_Left}.reload();")))))
