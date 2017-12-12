@@ -1,141 +1,22 @@
 ﻿@{
-    ViewBag.Title = "机动车查验信息录入";
+    ViewBag.Title = "药品明细";
     var X = Html.X();
 }
+
 @section header{
-    <script src="~/Content/js/Zeus.js"></script>
     <script type="text/javascript">
-        var AddRecord = function () {
-            this.up('form').getForm().reset();
-            App.GP_Left.getSelectionModel().clearSelections();
-            App.GP_Left.getView().refresh();
-        };
-        var SaveRecord = function () {
-            if (App.FP_Right.getForm().isValid()) {
-                $.loading(true, "正在提交数据...");
-                window.setTimeout(function () {
-                    $.ajax({
-                        url: "/Routine/CarCheck/SaveSingle",
-                        loading: "正在提交数据...",
-                        type: "post",
-                        dataType: "json",
-                        data: {
-                            __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
-                            fpValue: Ext.encode(App.FP_Right.getForm().getValues()),
-                            keyValue: App.GP_Left.getSelectionModel().hasSelection() ?
-                                App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id : ''
-                        },
-                        success: function (result) {
-                            if (result.state == "success") {
-                                //$.modalMsg(result.message, result.state);
-                                App.FP_Right.getForm().reset();
-                                App.GP_Left.store.reload();
-                                App.GP_Left.getSelectionModel().clearSelections();
-                                App.GP_Left.getView().refresh();
-                            } else {
-                                $.modalAlert(result.message, result.state);
-                            }
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            $.loading(false);
-                            $.modalMsg(errorThrown, "error");
-                        },
-                        complete: function () {
-                            $.loading(false);
-                        }
-                    });
-                }, 500);
-            }
-            else {
-                return false;
-            }
-        };
-        var DeleteRecord = function () {
-            if (App.GP_Left.getSelectionModel().hasSelection()) {
-                $.modalConfirm("注：您确定要删除该项数据吗？", function (r) {
-                    if (r) {
-                        $.loading(true, "正在提交数据...");
-                        window.setTimeout(function () {
-                            $.ajax({
-                                url: "/Routine/CarCheck/DeleteSingle",
-                                loading: "正在提交数据...",
-                                type: "post",
-                                dataType: "json",
-                                data: {
-                                    __RequestVerificationToken: $('[name=__RequestVerificationToken]').val(),
-                                    keyValue: App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id
-                                },
-                                success: function (result) {
-                                    if (result.state == "success") {
-                                        $.modalMsg(result.message, result.state);
-                                        App.FP_Right.getForm().reset();
-                                        App.GP_Left.store.reload();
-                                        App.GP_Left.getSelectionModel().clearSelections();
-                                        App.GP_Left.getView().refresh();
-                                    } else {
-                                        $.modalAlert(result.message, result.state);
-                                    }
-                                },
-                                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                    $.loading(false);
-                                    $.modalMsg(errorThrown, "error");
-                                },
-                                complete: function () {
-                                    $.loading(false);
-                                }
-                            });
-                        }, 500);
-                    }
-                });
-            }
-            else {
-                $.modalMsg("请至少选中一条明细进行操作！");
-            }
-        };
-        var PrintRecord = function () {
-            if (App.GP_Left.getSelectionModel().hasSelection()) {
-                var TempID = App.GP_Left.getSelectionModel().getSelection()[0].data.F_Id;
-                var TempUrl = GetRootPath() + '/Routine/CarCheck/Print?keyValue=' + TempID;
-                window.parent.open(TempUrl)
-            }
-            else {
-                $.modalMsg("请至少选中一条明细进行操作！");
-            }
-        };
         var SelectedRecord = function (e, row) {
             if (row[0]) {
                 this.up('form').getForm().reset();
                 this.up('form').getForm().loadRecord(row[0]);
             }
         };
-        var R_IsNewCar = function (value, cellmeta, r) {
-            if (r.data.F_6) {
-                cellmeta.css = 'itemColor';
-            }
-            return value;
-        };
-        var SumCount = function () {
-            $.ajax({
-                url: "/Routine/CarCheck/GetSumInfo",
-                data: { beginDate: formatExtTime(App.DF_BeginTime.getValue()), endDate: formatExtTime(App.DF_EndTime.getValue()) },
-                dataType: "json",
-                async: false,
-                success: function (data) {
-                    App.TF_NewCarCount.setValue(data.vNewCarCount + "辆");
-                    App.TF_OldCarCount.setValue(data.vOldCarCount + "辆");
-                }
-            });
-        };
     </script>
-    <style type="text/css">
-        .itemColor {
-            background-color:greenyellow;
-        }
-    </style>
 }
+
 @(X.Viewport().Layout(LayoutType.Fit).Items(
-        X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
-            X.GridPanel().ID("GP_Left").Region(Region.West).Width(460)
+      X.FormPanel().ID("FP_Main").Layout(LayoutType.Border).StyleSpec("border:1px solid #DFDFDF;").Items(
+          X.GridPanel().ID("GP_Left").Region(Region.West).Width(460)
             .StyleSpec("border:1px solid #DFDFDF;border-left:0px;border-right:0px;")
             .Store(X.Store().ID("S_Left").Parameters(new
             {
@@ -146,13 +27,11 @@
             ).Proxy(X.AjaxProxy().Url(Url.Action("GetList"))
             .Reader(X.JsonReader().RootProperty("data").TotalProperty("total")))).ColumnModel(
                 X.RowNumbererColumn().Align(Alignment.Center).Text("序号").Width(50),
-                X.Column().Text("识别代号").DataIndex("F_1").Filter(X.StringFilter().EmptyText("输入车辆识别代号")).Width(180),
-                X.Column().Text("是否新车").DataIndex("F_6").Filter(X.StringFilter().EmptyText("是否新车")).Width(80)
-                .Renderer("R_IsNewCar"),
+                X.Column().Text("药品名称").DataIndex("F_1").Filter(X.StringFilter().EmptyText("请输入药品名称")).Width(180),
                 X.DateColumn().Text("录入时间").DataIndex("F_CreatorTime").Format("yyyy-MM-dd HH:mm:ss").Width(150))
             .View(X.GridView().EnableTextSelection(true).StripeRows(true).LoadingText("正在努力加载中"))
             .Plugins(X.CellEditing(), X.GridFilters().MenuFilterText("查询")).Listeners(l => l.SelectionChange.Fn = "SelectedRecord"),
-            X.FormPanel().ID("FP_Right").StyleSpec("border:1px solid #DFDFDF;border-right:0px;").AutoScroll(true)
+          X.FormPanel().ID("FP_Right").StyleSpec("border:1px solid #DFDFDF;border-right:0px;").AutoScroll(true)
             .Layout(LayoutType.Form).Region(Region.Center).BodyStyle("overflow-x:visible;overflow-y:hidden").Items(
                 X.FieldSet().Title("基本信息").FieldDefaults(fd => { fd.LabelAlign = LabelAlign.Right; fd.LabelWidth = 90; })
                 .Layout(LayoutType.Table).LayoutConfig(new TableLayoutConfig() { Columns = 3 }).PaddingSpec("3").Items(
@@ -237,7 +116,6 @@
                     X.Checkbox().BoxLabel("车辆识别代号").Name("F_22").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("发动机型号/号码").Name("F_23").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("车身品牌/型号").Name("F_24").MarginSpec("10px 10px 0px 0px"),
-                    //X.Checkbox().BoxLabel("车辆类型").Name("F_25").MarginSpec("10px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("号牌/车辆外观形状").Name("F_26").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("轮胎完好情况").Name("F_27").MarginSpec("20px 10px 0px 0px"),
                     X.Checkbox().BoxLabel("安全带、三角警告牌").Name("F_28").MarginSpec("20px 10px 0px 0px"),
@@ -274,10 +152,8 @@
                     X.ListItem().Text("10"),
                     X.ListItem().Text("5"))
             .Listeners(ls => ls.Select.Handler = "#{S_Left}.reload();"),
-            X.Button().Text("新增").Icon(Icon.Add).Width(80).Listeners(ls => ls.Click.Fn = "AddRecord"),
-            X.Button().Text("保存").Icon(Icon.Disk).Listeners(ls => ls.Click.Fn = "SaveRecord"),
-            X.Button().Text("打印").Icon(Icon.Printer).Width(80).Listeners(ls => ls.Click.Fn = "PrintRecord"),
-            X.Button().Text("删除").Width(80).Icon(Icon.Delete).Listeners(ls => ls.Click.Fn = "DeleteRecord"),
-            X.Button().Text("合计").Icon(Icon.Sum).Width(80).Listeners(ls => ls.Click.Fn = "SumCount"),
+            X.Button().Text("新增").Icon(Icon.Add).Width(80),
+            X.Button().Text("保存").Icon(Icon.Disk),
+            X.Button().Text("删除").Width(80).Icon(Icon.Delete),
             X.Button().Text("清空").Icon(Icon.Cancel).OnClientClick("#{FP_Right}.reset();"),
             X.Button().Text("刷新").Icon(Icon.Reload).Width(80).OnClientClick("#{S_Left}.reload();")))))

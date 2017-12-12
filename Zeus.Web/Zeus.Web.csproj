@@ -511,6 +511,7 @@
     <Content Include="Areas\Routine\Views\CarCheck\Print.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Print.cshtml" />
+    <Content Include="Areas\Routine\Views\DrugsDetail\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Zeus.pubxml" />
     <Content Include="Resource\DbBackup\201710231021181466.bak" />
     <None Include="Web.Debug.config">
@@ -522,7 +523,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Routine\Views\DrugsDetail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeus.Application\Zeus.Application.csproj">

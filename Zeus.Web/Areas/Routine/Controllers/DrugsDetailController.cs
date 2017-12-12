@@ -6,12 +6,8 @@ using System.Web.Mvc;
 
 namespace Zeus.Web.Areas.Routine.Controllers
 {
-    public class DrugsDetailController : Controller
+    public class DrugsDetailController : ControllerBase
     {
-        // GET: Routine/DrugsDetail
-        public ActionResult Index()
-        {
-            return View();
-        }
+
     }
 }
