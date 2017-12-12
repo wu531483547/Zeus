@@ -406,6 +406,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Routine\Controllers\CarCheckController.cs" />
+    <Compile Include="Areas\Routine\Controllers\DrugsDetailController.cs" />
     <Compile Include="Areas\Routine\Controllers\ReceivablesController.cs" />
     <Compile Include="Areas\Routine\RoutineAreaRegistration.cs" />
     <Compile Include="Areas\SystemManage\Controllers\AreaController.cs" />
@@ -521,6 +522,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Routine\Views\DrugsDetail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeus.Application\Zeus.Application.csproj">

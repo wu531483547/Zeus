@@ -4,8 +4,8 @@
 <#@ import namespace="System.Text" #> 
 <#@ import namespace="System.Collections.Generic" #>
  <#@ output extension=".txt" #> 
- <# for (int i = 6; i < 40; i++) 
+ <# for (int i = 51; i < 115; i++) 
  { 
  #>
- carcheckEntity.F_<#=i#> = carcheckDic.ContainsKey("F_<#=i#>") == true ? true : false;
+ [f<#=i#>] [float] NULL,
  <#}#>
