@@ -79,12 +79,11 @@
                 <tr>
                     <th class="formTitle">图标</th>
                     <td class="formValue">
-                        <div class="input-group">
-                            <input id="F_Icon" name="F_Icon" type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <a class="btn  btn-primary"><i class="fa fa-ellipsis-h"></i></a>
-                            </span>
-                        </div>
+                        <select id="F_Icon" name="F_Icon" class="form-control required">
+                            <option value="">==请选择==</option>
+                            <option value="fa fa-file" title="末级菜单">fa fa-file</option>
+                            <option value="fa fa-tasks" title="非末级菜单">fa fa-tasks</option>
+                        </select>
                     </td>
                     <th class="formTitle">排序</th>
                     <td class="formValue">

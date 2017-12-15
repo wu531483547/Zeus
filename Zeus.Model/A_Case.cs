@@ -12,25 +12,26 @@ namespace Zeus.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Sys_Role
+    public partial class A_Case
     {
         public string F_Id { get; set; }
-        public string F_OrganizeId { get; set; }
-        public Nullable<int> F_Category { get; set; }
-        public string F_EnCode { get; set; }
-        public string F_FullName { get; set; }
-        public string F_Type { get; set; }
-        public Nullable<bool> F_AllowEdit { get; set; }
-        public Nullable<bool> F_AllowDelete { get; set; }
-        public Nullable<int> F_SortCode { get; set; }
-        public Nullable<bool> F_DeleteMark { get; set; }
-        public Nullable<bool> F_EnabledMark { get; set; }
-        public string F_Description { get; set; }
+        public string F_1 { get; set; }
+        public string F_2 { get; set; }
+        public string F_3 { get; set; }
+        public string F_4 { get; set; }
+        public string F_5 { get; set; }
+        public string F_6 { get; set; }
+        public string F_7 { get; set; }
+        public string F_8 { get; set; }
+        public string F_9 { get; set; }
+        public string F_Remakes { get; set; }
         public Nullable<System.DateTime> F_CreatorTime { get; set; }
         public string F_CreatorUserId { get; set; }
         public Nullable<System.DateTime> F_LastModifyTime { get; set; }
         public string F_LastModifyUserId { get; set; }
         public Nullable<System.DateTime> F_DeleteTime { get; set; }
         public string F_DeleteUserId { get; set; }
+        public Nullable<bool> F_DeleteMark { get; set; }
+        public string F_10 { get; set; }
     }
 }

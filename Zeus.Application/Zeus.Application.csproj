@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routine\CarCheckApp.cs" />
+    <Compile Include="Routine\CaseApp.cs" />
+    <Compile Include="Routine\DrugsApp.cs" />
     <Compile Include="Routine\ReceivablesApp.cs" />
     <Compile Include="SystemManage\AreaApp.cs" />
     <Compile Include="SystemManage\DutyApp.cs" />

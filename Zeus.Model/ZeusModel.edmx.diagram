@@ -20,6 +20,8 @@
         <EntityTypeShape EntityType="ZeusModel.Sys_UserLogOn" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeusModel.A_CarCheck" Width="1.5" PointX="9.375" PointY="13.75" />
         <EntityTypeShape EntityType="ZeusModel.A_Receivables" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ZeusModel.A_Drugs" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ZeusModel.A_Case" Width="1.5" PointX="13.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

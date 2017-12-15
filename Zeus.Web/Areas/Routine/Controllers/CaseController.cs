@@ -7,14 +7,14 @@ using Zeus.Application.Routine;
 
 namespace Zeus.Web.Areas.Routine.Controllers
 {
-    public class DrugsDetailController : ControllerBase
+    public class CaseController : ControllerBase
     {
-        private DrugsApp drugsApp = new DrugsApp();
+        private CaseApp caseApp = new CaseApp();
         [HttpGet]
         [HandlerAjaxOnly]
-        public StoreResult GetList(DateTime BeginTime, DateTime EndTime)
+        public StoreResult GetList(DateTime BeginTime, DateTime EndTime,string PatientName)
         {
-            var data = drugsApp.GetList(BeginTime, EndTime);
+            var data = caseApp.GetList(BeginTime, EndTime, PatientName);
             return this.Store(data, data.Count);
         }
 
@@ -23,7 +23,7 @@ namespace Zeus.Web.Areas.Routine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveSingle(string fpValue, string keyValue)
         {
-            drugsApp.SubmitSingle(JsonConvert.DeserializeObject<Dictionary<string, string>>(fpValue), keyValue);
+            caseApp.SubmitSingle(JsonConvert.DeserializeObject<Dictionary<string, string>>(fpValue), keyValue);
             return Success("操作成功。");
         }
 
@@ -32,7 +32,7 @@ namespace Zeus.Web.Areas.Routine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSingle(string keyValue)
         {
-            drugsApp.DeleteSingle(keyValue);
+            caseApp.DeleteSingle(keyValue);
             return Success("操作成功。");
         }
     }

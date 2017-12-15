@@ -406,6 +406,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Routine\Controllers\CarCheckController.cs" />
+    <Compile Include="Areas\Routine\Controllers\CaseController.cs" />
     <Compile Include="Areas\Routine\Controllers\DrugsDetailController.cs" />
     <Compile Include="Areas\Routine\Controllers\ReceivablesController.cs" />
     <Compile Include="Areas\Routine\RoutineAreaRegistration.cs" />
@@ -512,8 +513,9 @@
     <Content Include="Areas\Routine\Views\Receivables\Index.cshtml" />
     <Content Include="Areas\Routine\Views\Receivables\Print.cshtml" />
     <Content Include="Areas\Routine\Views\DrugsDetail\Index.cshtml" />
+    <Content Include="Areas\Routine\Views\Case\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Zeus.pubxml" />
-    <Content Include="Resource\DbBackup\201710231021181466.bak" />
+    <Content Include="Resource\DbBackup\201712151410566603.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

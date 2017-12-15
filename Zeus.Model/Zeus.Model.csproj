@@ -54,9 +54,17 @@
     <Compile Include="A_CarCheck.cs">
       <DependentUpon>ZeusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="A_Case.cs">
+      <DependentUpon>ZeusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="A_Drugs.cs">
+      <DependentUpon>ZeusModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="A_Receivables.cs">
       <DependentUpon>ZeusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Routine\A_Case.cs" />
+    <Compile Include="Entity\Routine\A_Drugs.cs" />
     <Compile Include="Entity\Routine\A_CarCheck.cs" />
     <Compile Include="Entity\Routine\A_Receivables.cs" />
     <Compile Include="Entity\SystemManage\Sys_Area.cs" />

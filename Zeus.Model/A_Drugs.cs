@@ -12,20 +12,20 @@ namespace Zeus.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Sys_Log
+    public partial class A_Drugs
     {
         public string F_Id { get; set; }
-        public Nullable<System.DateTime> F_Date { get; set; }
-        public string F_Account { get; set; }
-        public string F_NickName { get; set; }
-        public string F_Type { get; set; }
-        public string F_IPAddress { get; set; }
-        public string F_IPAddressName { get; set; }
-        public string F_ModuleId { get; set; }
-        public string F_ModuleName { get; set; }
-        public Nullable<bool> F_Result { get; set; }
-        public string F_Description { get; set; }
+        public string F_1 { get; set; }
+        public string F_2 { get; set; }
+        public string F_3 { get; set; }
+        public string F_4 { get; set; }
+        public string F_Remakes { get; set; }
         public Nullable<System.DateTime> F_CreatorTime { get; set; }
         public string F_CreatorUserId { get; set; }
+        public Nullable<System.DateTime> F_LastModifyTime { get; set; }
+        public string F_LastModifyUserId { get; set; }
+        public Nullable<System.DateTime> F_DeleteTime { get; set; }
+        public string F_DeleteUserId { get; set; }
+        public Nullable<bool> F_DeleteMark { get; set; }
     }
 }
