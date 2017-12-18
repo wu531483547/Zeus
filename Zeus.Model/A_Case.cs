@@ -24,6 +24,7 @@ namespace Zeus.Model
         public string F_7 { get; set; }
         public string F_8 { get; set; }
         public string F_9 { get; set; }
+        public string F_10 { get; set; }
         public string F_Remakes { get; set; }
         public Nullable<System.DateTime> F_CreatorTime { get; set; }
         public string F_CreatorUserId { get; set; }
@@ -32,6 +33,5 @@ namespace Zeus.Model
         public Nullable<System.DateTime> F_DeleteTime { get; set; }
         public string F_DeleteUserId { get; set; }
         public Nullable<bool> F_DeleteMark { get; set; }
-        public string F_10 { get; set; }
     }
 }

@@ -25,6 +25,10 @@ namespace Zeus.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<A_CarCheck> A_CarCheck { get; set; }
+        public virtual DbSet<A_Case> A_Case { get; set; }
+        public virtual DbSet<A_Drugs> A_Drugs { get; set; }
+        public virtual DbSet<A_Receivables> A_Receivables { get; set; }
         public virtual DbSet<Sys_Area> Sys_Area { get; set; }
         public virtual DbSet<Sys_DbBackup> Sys_DbBackup { get; set; }
         public virtual DbSet<Sys_FilterIP> Sys_FilterIP { get; set; }
@@ -38,9 +42,5 @@ namespace Zeus.Model
         public virtual DbSet<Sys_RoleAuthorize> Sys_RoleAuthorize { get; set; }
         public virtual DbSet<Sys_User> Sys_User { get; set; }
         public virtual DbSet<Sys_UserLogOn> Sys_UserLogOn { get; set; }
-        public virtual DbSet<A_CarCheck> A_CarCheck { get; set; }
-        public virtual DbSet<A_Receivables> A_Receivables { get; set; }
-        public virtual DbSet<A_Drugs> A_Drugs { get; set; }
-        public virtual DbSet<A_Case> A_Case { get; set; }
     }
 }

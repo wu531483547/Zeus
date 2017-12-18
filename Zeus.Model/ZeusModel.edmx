@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ZeusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ZeusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="A_CarCheck">
           <Key>
             <PropertyRef Name="F_Id" />
@@ -457,10 +457,137 @@
           <EntitySet Name="Sys_User" EntityType="Self.Sys_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sys_UserLogOn" EntityType="Self.Sys_UserLogOn" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZeusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="A_CarCheck">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_6" Type="Boolean" />
+          <Property Name="F_7" Type="Boolean" />
+          <Property Name="F_8" Type="Boolean" />
+          <Property Name="F_9" Type="Boolean" />
+          <Property Name="F_10" Type="Boolean" />
+          <Property Name="F_11" Type="Boolean" />
+          <Property Name="F_12" Type="Boolean" />
+          <Property Name="F_13" Type="Boolean" />
+          <Property Name="F_14" Type="Boolean" />
+          <Property Name="F_15" Type="Boolean" />
+          <Property Name="F_16" Type="Boolean" />
+          <Property Name="F_17" Type="Boolean" />
+          <Property Name="F_18" Type="Boolean" />
+          <Property Name="F_19" Type="Boolean" />
+          <Property Name="F_20" Type="Boolean" />
+          <Property Name="F_21" Type="Boolean" />
+          <Property Name="F_22" Type="Boolean" />
+          <Property Name="F_23" Type="Boolean" />
+          <Property Name="F_24" Type="Boolean" />
+          <Property Name="F_25" Type="Boolean" />
+          <Property Name="F_26" Type="Boolean" />
+          <Property Name="F_27" Type="Boolean" />
+          <Property Name="F_28" Type="Boolean" />
+          <Property Name="F_29" Type="Boolean" />
+          <Property Name="F_30" Type="Boolean" />
+          <Property Name="F_31" Type="Boolean" />
+          <Property Name="F_32" Type="Boolean" />
+          <Property Name="F_33" Type="Boolean" />
+          <Property Name="F_34" Type="Boolean" />
+          <Property Name="F_35" Type="Boolean" />
+          <Property Name="F_36" Type="Boolean" />
+          <Property Name="F_37" Type="Boolean" />
+          <Property Name="F_38" Type="Boolean" />
+          <Property Name="F_39" Type="Boolean" />
+          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
+          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Boolean" />
+          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_40" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="A_Case">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="F_7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_8" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_9" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
+          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="A_Drugs">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
+          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="A_Receivables">
+          <Key>
+            <PropertyRef Name="F_Id" />
+          </Key>
+          <Property Name="F_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="F_SKDH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CLLX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_CLLB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_MH" Type="Boolean" />
+          <Property Name="F_MZ" Type="Boolean" />
+          <Property Name="F_ZX" Type="Boolean" />
+          <Property Name="F_ZZL" Type="Boolean" />
+          <Property Name="F_KDH" Type="Boolean" />
+          <Property Name="F_RS" Type="Boolean" />
+          <Property Name="F_SFJE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="F_JEDX" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="F_SKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_JKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_JZZT" Type="Boolean" />
+          <Property Name="F_HKSJ" Type="DateTime" Precision="3" />
+          <Property Name="F_ZFZT" Type="Boolean" />
+          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
+          <Property Name="F_CreatorUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="F_LastModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="F_DeleteUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="F_DeleteMark" Type="Boolean" />
+          <Property Name="F_Remakes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Sys_Area">
           <Key>
             <PropertyRef Name="F_Id" />
@@ -769,6 +896,10 @@
           <Property Name="F_Theme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="ZeusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="A_CarCheck" EntityType="Self.A_CarCheck" />
+          <EntitySet Name="A_Case" EntityType="Self.A_Case" />
+          <EntitySet Name="A_Drugs" EntityType="Self.A_Drugs" />
+          <EntitySet Name="A_Receivables" EntityType="Self.A_Receivables" />
           <EntitySet Name="Sys_Area" EntityType="Self.Sys_Area" />
           <EntitySet Name="Sys_DbBackup" EntityType="Self.Sys_DbBackup" />
           <EntitySet Name="Sys_FilterIP" EntityType="Self.Sys_FilterIP" />
@@ -782,143 +913,143 @@
           <EntitySet Name="Sys_RoleAuthorize" EntityType="Self.Sys_RoleAuthorize" />
           <EntitySet Name="Sys_User" EntityType="Self.Sys_User" />
           <EntitySet Name="Sys_UserLogOn" EntityType="Self.Sys_UserLogOn" />
-          <EntitySet Name="A_CarCheck" EntityType="ZeusModel.A_CarCheck" />
-          <EntitySet Name="A_Receivables" EntityType="ZeusModel.A_Receivables" />
-          <EntitySet Name="A_Drugs" EntityType="ZeusModel.A_Drugs" />
-          <EntitySet Name="A_Case" EntityType="ZeusModel.A_Case" />
         </EntityContainer>
-        <EntityType Name="A_CarCheck">
-          <Key>
-            <PropertyRef Name="F_Id" />
-          </Key>
-          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_6" Type="Boolean" />
-          <Property Name="F_7" Type="Boolean" />
-          <Property Name="F_8" Type="Boolean" />
-          <Property Name="F_9" Type="Boolean" />
-          <Property Name="F_10" Type="Boolean" />
-          <Property Name="F_11" Type="Boolean" />
-          <Property Name="F_12" Type="Boolean" />
-          <Property Name="F_13" Type="Boolean" />
-          <Property Name="F_14" Type="Boolean" />
-          <Property Name="F_15" Type="Boolean" />
-          <Property Name="F_16" Type="Boolean" />
-          <Property Name="F_17" Type="Boolean" />
-          <Property Name="F_18" Type="Boolean" />
-          <Property Name="F_19" Type="Boolean" />
-          <Property Name="F_20" Type="Boolean" />
-          <Property Name="F_21" Type="Boolean" />
-          <Property Name="F_22" Type="Boolean" />
-          <Property Name="F_23" Type="Boolean" />
-          <Property Name="F_24" Type="Boolean" />
-          <Property Name="F_25" Type="Boolean" />
-          <Property Name="F_26" Type="Boolean" />
-          <Property Name="F_27" Type="Boolean" />
-          <Property Name="F_28" Type="Boolean" />
-          <Property Name="F_29" Type="Boolean" />
-          <Property Name="F_30" Type="Boolean" />
-          <Property Name="F_31" Type="Boolean" />
-          <Property Name="F_32" Type="Boolean" />
-          <Property Name="F_33" Type="Boolean" />
-          <Property Name="F_34" Type="Boolean" />
-          <Property Name="F_35" Type="Boolean" />
-          <Property Name="F_36" Type="Boolean" />
-          <Property Name="F_37" Type="Boolean" />
-          <Property Name="F_38" Type="Boolean" />
-          <Property Name="F_39" Type="Boolean" />
-          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
-          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
-          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
-          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteMark" Type="Boolean" />
-          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_40" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="A_Receivables">
-          <Key>
-            <PropertyRef Name="F_Id" />
-          </Key>
-          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_SKDH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_CLLX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_CLLB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_MH" Type="Boolean" />
-          <Property Name="F_MZ" Type="Boolean" />
-          <Property Name="F_ZX" Type="Boolean" />
-          <Property Name="F_ZZL" Type="Boolean" />
-          <Property Name="F_KDH" Type="Boolean" />
-          <Property Name="F_RS" Type="Boolean" />
-          <Property Name="F_SFJE" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="F_JEDX" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_SKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_JKRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_JZZT" Type="Boolean" />
-          <Property Name="F_HKSJ" Type="DateTime" Precision="3" />
-          <Property Name="F_ZFZT" Type="Boolean" />
-          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
-          <Property Name="F_CreatorUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
-          <Property Name="F_LastModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
-          <Property Name="F_DeleteUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteMark" Type="Boolean" />
-          <Property Name="F_Remakes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="A_Drugs">
-          <Key>
-            <PropertyRef Name="F_Id" />
-          </Key>
-          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
-          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
-          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
-          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteMark" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="A_Case">
-          <Key>
-            <PropertyRef Name="F_Id" />
-          </Key>
-          <Property Name="F_Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="F_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="F_7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="F_8" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_9" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_Remakes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="F_CreatorTime" Type="DateTime" Precision="3" />
-          <Property Name="F_CreatorUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_LastModifyTime" Type="DateTime" Precision="3" />
-          <Property Name="F_LastModifyUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteTime" Type="DateTime" Precision="3" />
-          <Property Name="F_DeleteUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="F_DeleteMark" Type="Boolean" />
-          <Property Name="F_10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ZeusModelStoreContainer" CdmEntityContainer="ZeusEntities">
+          <EntitySetMapping Name="A_CarCheck">
+            <EntityTypeMapping TypeName="ZeusModel.A_CarCheck">
+              <MappingFragment StoreEntitySet="A_CarCheck">
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_1" ColumnName="F_1" />
+                <ScalarProperty Name="F_2" ColumnName="F_2" />
+                <ScalarProperty Name="F_3" ColumnName="F_3" />
+                <ScalarProperty Name="F_4" ColumnName="F_4" />
+                <ScalarProperty Name="F_5" ColumnName="F_5" />
+                <ScalarProperty Name="F_6" ColumnName="F_6" />
+                <ScalarProperty Name="F_7" ColumnName="F_7" />
+                <ScalarProperty Name="F_8" ColumnName="F_8" />
+                <ScalarProperty Name="F_9" ColumnName="F_9" />
+                <ScalarProperty Name="F_10" ColumnName="F_10" />
+                <ScalarProperty Name="F_11" ColumnName="F_11" />
+                <ScalarProperty Name="F_12" ColumnName="F_12" />
+                <ScalarProperty Name="F_13" ColumnName="F_13" />
+                <ScalarProperty Name="F_14" ColumnName="F_14" />
+                <ScalarProperty Name="F_15" ColumnName="F_15" />
+                <ScalarProperty Name="F_16" ColumnName="F_16" />
+                <ScalarProperty Name="F_17" ColumnName="F_17" />
+                <ScalarProperty Name="F_18" ColumnName="F_18" />
+                <ScalarProperty Name="F_19" ColumnName="F_19" />
+                <ScalarProperty Name="F_20" ColumnName="F_20" />
+                <ScalarProperty Name="F_21" ColumnName="F_21" />
+                <ScalarProperty Name="F_22" ColumnName="F_22" />
+                <ScalarProperty Name="F_23" ColumnName="F_23" />
+                <ScalarProperty Name="F_24" ColumnName="F_24" />
+                <ScalarProperty Name="F_25" ColumnName="F_25" />
+                <ScalarProperty Name="F_26" ColumnName="F_26" />
+                <ScalarProperty Name="F_27" ColumnName="F_27" />
+                <ScalarProperty Name="F_28" ColumnName="F_28" />
+                <ScalarProperty Name="F_29" ColumnName="F_29" />
+                <ScalarProperty Name="F_30" ColumnName="F_30" />
+                <ScalarProperty Name="F_31" ColumnName="F_31" />
+                <ScalarProperty Name="F_32" ColumnName="F_32" />
+                <ScalarProperty Name="F_33" ColumnName="F_33" />
+                <ScalarProperty Name="F_34" ColumnName="F_34" />
+                <ScalarProperty Name="F_35" ColumnName="F_35" />
+                <ScalarProperty Name="F_36" ColumnName="F_36" />
+                <ScalarProperty Name="F_37" ColumnName="F_37" />
+                <ScalarProperty Name="F_38" ColumnName="F_38" />
+                <ScalarProperty Name="F_39" ColumnName="F_39" />
+                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
+                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
+                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
+                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
+                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
+                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
+                <ScalarProperty Name="F_40" ColumnName="F_40" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_Case">
+            <EntityTypeMapping TypeName="ZeusModel.A_Case">
+              <MappingFragment StoreEntitySet="A_Case">
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_1" ColumnName="F_1" />
+                <ScalarProperty Name="F_2" ColumnName="F_2" />
+                <ScalarProperty Name="F_3" ColumnName="F_3" />
+                <ScalarProperty Name="F_4" ColumnName="F_4" />
+                <ScalarProperty Name="F_5" ColumnName="F_5" />
+                <ScalarProperty Name="F_6" ColumnName="F_6" />
+                <ScalarProperty Name="F_7" ColumnName="F_7" />
+                <ScalarProperty Name="F_8" ColumnName="F_8" />
+                <ScalarProperty Name="F_9" ColumnName="F_9" />
+                <ScalarProperty Name="F_10" ColumnName="F_10" />
+                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
+                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
+                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
+                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
+                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
+                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
+                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_Drugs">
+            <EntityTypeMapping TypeName="ZeusModel.A_Drugs">
+              <MappingFragment StoreEntitySet="A_Drugs">
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_1" ColumnName="F_1" />
+                <ScalarProperty Name="F_2" ColumnName="F_2" />
+                <ScalarProperty Name="F_3" ColumnName="F_3" />
+                <ScalarProperty Name="F_4" ColumnName="F_4" />
+                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
+                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
+                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
+                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
+                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
+                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
+                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_Receivables">
+            <EntityTypeMapping TypeName="ZeusModel.A_Receivables">
+              <MappingFragment StoreEntitySet="A_Receivables">
+                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
+                <ScalarProperty Name="F_SKDH" ColumnName="F_SKDH" />
+                <ScalarProperty Name="F_CLLX" ColumnName="F_CLLX" />
+                <ScalarProperty Name="F_CLLB" ColumnName="F_CLLB" />
+                <ScalarProperty Name="F_MH" ColumnName="F_MH" />
+                <ScalarProperty Name="F_MZ" ColumnName="F_MZ" />
+                <ScalarProperty Name="F_ZX" ColumnName="F_ZX" />
+                <ScalarProperty Name="F_ZZL" ColumnName="F_ZZL" />
+                <ScalarProperty Name="F_KDH" ColumnName="F_KDH" />
+                <ScalarProperty Name="F_RS" ColumnName="F_RS" />
+                <ScalarProperty Name="F_SFJE" ColumnName="F_SFJE" />
+                <ScalarProperty Name="F_JEDX" ColumnName="F_JEDX" />
+                <ScalarProperty Name="F_SKRY" ColumnName="F_SKRY" />
+                <ScalarProperty Name="F_JKRY" ColumnName="F_JKRY" />
+                <ScalarProperty Name="F_JZZT" ColumnName="F_JZZT" />
+                <ScalarProperty Name="F_HKSJ" ColumnName="F_HKSJ" />
+                <ScalarProperty Name="F_ZFZT" ColumnName="F_ZFZT" />
+                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
+                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
+                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
+                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
+                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
+                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
+                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
+                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sys_Area">
             <EntityTypeMapping TypeName="ZeusModel.Sys_Area">
               <MappingFragment StoreEntitySet="Sys_Area">
@@ -1236,136 +1367,6 @@
                 <ScalarProperty Name="F_CheckIPAddress" ColumnName="F_CheckIPAddress" />
                 <ScalarProperty Name="F_Language" ColumnName="F_Language" />
                 <ScalarProperty Name="F_Theme" ColumnName="F_Theme" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="A_CarCheck">
-            <EntityTypeMapping TypeName="ZeusModel.A_CarCheck">
-              <MappingFragment StoreEntitySet="A_CarCheck">
-                <ScalarProperty Name="F_40" ColumnName="F_40" />
-                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
-                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
-                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
-                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
-                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
-                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
-                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
-                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
-                <ScalarProperty Name="F_39" ColumnName="F_39" />
-                <ScalarProperty Name="F_38" ColumnName="F_38" />
-                <ScalarProperty Name="F_37" ColumnName="F_37" />
-                <ScalarProperty Name="F_36" ColumnName="F_36" />
-                <ScalarProperty Name="F_35" ColumnName="F_35" />
-                <ScalarProperty Name="F_34" ColumnName="F_34" />
-                <ScalarProperty Name="F_33" ColumnName="F_33" />
-                <ScalarProperty Name="F_32" ColumnName="F_32" />
-                <ScalarProperty Name="F_31" ColumnName="F_31" />
-                <ScalarProperty Name="F_30" ColumnName="F_30" />
-                <ScalarProperty Name="F_29" ColumnName="F_29" />
-                <ScalarProperty Name="F_28" ColumnName="F_28" />
-                <ScalarProperty Name="F_27" ColumnName="F_27" />
-                <ScalarProperty Name="F_26" ColumnName="F_26" />
-                <ScalarProperty Name="F_25" ColumnName="F_25" />
-                <ScalarProperty Name="F_24" ColumnName="F_24" />
-                <ScalarProperty Name="F_23" ColumnName="F_23" />
-                <ScalarProperty Name="F_22" ColumnName="F_22" />
-                <ScalarProperty Name="F_21" ColumnName="F_21" />
-                <ScalarProperty Name="F_20" ColumnName="F_20" />
-                <ScalarProperty Name="F_19" ColumnName="F_19" />
-                <ScalarProperty Name="F_18" ColumnName="F_18" />
-                <ScalarProperty Name="F_17" ColumnName="F_17" />
-                <ScalarProperty Name="F_16" ColumnName="F_16" />
-                <ScalarProperty Name="F_15" ColumnName="F_15" />
-                <ScalarProperty Name="F_14" ColumnName="F_14" />
-                <ScalarProperty Name="F_13" ColumnName="F_13" />
-                <ScalarProperty Name="F_12" ColumnName="F_12" />
-                <ScalarProperty Name="F_11" ColumnName="F_11" />
-                <ScalarProperty Name="F_10" ColumnName="F_10" />
-                <ScalarProperty Name="F_9" ColumnName="F_9" />
-                <ScalarProperty Name="F_8" ColumnName="F_8" />
-                <ScalarProperty Name="F_7" ColumnName="F_7" />
-                <ScalarProperty Name="F_6" ColumnName="F_6" />
-                <ScalarProperty Name="F_5" ColumnName="F_5" />
-                <ScalarProperty Name="F_4" ColumnName="F_4" />
-                <ScalarProperty Name="F_3" ColumnName="F_3" />
-                <ScalarProperty Name="F_2" ColumnName="F_2" />
-                <ScalarProperty Name="F_1" ColumnName="F_1" />
-                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="A_Receivables">
-            <EntityTypeMapping TypeName="ZeusModel.A_Receivables">
-              <MappingFragment StoreEntitySet="A_Receivables">
-                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
-                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
-                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
-                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
-                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
-                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
-                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
-                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
-                <ScalarProperty Name="F_ZFZT" ColumnName="F_ZFZT" />
-                <ScalarProperty Name="F_HKSJ" ColumnName="F_HKSJ" />
-                <ScalarProperty Name="F_JZZT" ColumnName="F_JZZT" />
-                <ScalarProperty Name="F_JKRY" ColumnName="F_JKRY" />
-                <ScalarProperty Name="F_SKRY" ColumnName="F_SKRY" />
-                <ScalarProperty Name="F_JEDX" ColumnName="F_JEDX" />
-                <ScalarProperty Name="F_SFJE" ColumnName="F_SFJE" />
-                <ScalarProperty Name="F_RS" ColumnName="F_RS" />
-                <ScalarProperty Name="F_KDH" ColumnName="F_KDH" />
-                <ScalarProperty Name="F_ZZL" ColumnName="F_ZZL" />
-                <ScalarProperty Name="F_ZX" ColumnName="F_ZX" />
-                <ScalarProperty Name="F_MZ" ColumnName="F_MZ" />
-                <ScalarProperty Name="F_MH" ColumnName="F_MH" />
-                <ScalarProperty Name="F_CLLB" ColumnName="F_CLLB" />
-                <ScalarProperty Name="F_CLLX" ColumnName="F_CLLX" />
-                <ScalarProperty Name="F_SKDH" ColumnName="F_SKDH" />
-                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="A_Drugs">
-            <EntityTypeMapping TypeName="ZeusModel.A_Drugs">
-              <MappingFragment StoreEntitySet="A_Drugs">
-                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
-                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
-                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
-                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
-                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
-                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
-                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
-                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
-                <ScalarProperty Name="F_4" ColumnName="F_4" />
-                <ScalarProperty Name="F_3" ColumnName="F_3" />
-                <ScalarProperty Name="F_2" ColumnName="F_2" />
-                <ScalarProperty Name="F_1" ColumnName="F_1" />
-                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="A_Case">
-            <EntityTypeMapping TypeName="ZeusModel.A_Case">
-              <MappingFragment StoreEntitySet="A_Case">
-                <ScalarProperty Name="F_10" ColumnName="F_10" />
-                <ScalarProperty Name="F_DeleteMark" ColumnName="F_DeleteMark" />
-                <ScalarProperty Name="F_DeleteUserId" ColumnName="F_DeleteUserId" />
-                <ScalarProperty Name="F_DeleteTime" ColumnName="F_DeleteTime" />
-                <ScalarProperty Name="F_LastModifyUserId" ColumnName="F_LastModifyUserId" />
-                <ScalarProperty Name="F_LastModifyTime" ColumnName="F_LastModifyTime" />
-                <ScalarProperty Name="F_CreatorUserId" ColumnName="F_CreatorUserId" />
-                <ScalarProperty Name="F_CreatorTime" ColumnName="F_CreatorTime" />
-                <ScalarProperty Name="F_Remakes" ColumnName="F_Remakes" />
-                <ScalarProperty Name="F_9" ColumnName="F_9" />
-                <ScalarProperty Name="F_8" ColumnName="F_8" />
-                <ScalarProperty Name="F_7" ColumnName="F_7" />
-                <ScalarProperty Name="F_6" ColumnName="F_6" />
-                <ScalarProperty Name="F_5" ColumnName="F_5" />
-                <ScalarProperty Name="F_4" ColumnName="F_4" />
-                <ScalarProperty Name="F_3" ColumnName="F_3" />
-                <ScalarProperty Name="F_2" ColumnName="F_2" />
-                <ScalarProperty Name="F_1" ColumnName="F_1" />
-                <ScalarProperty Name="F_Id" ColumnName="F_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

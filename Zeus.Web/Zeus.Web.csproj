@@ -385,6 +385,7 @@
     <Content Include="Index.html" />
     <Content Include="Resource\20171021.sql" />
     <Content Include="Resource\Temp.jpg" />
+    <Content Include="Resource\Zeus.mdb" />
     <Content Include="TextTemplate1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTemplate1.txt</LastGenOutput>

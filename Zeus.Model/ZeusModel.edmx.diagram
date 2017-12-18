@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e455ae29e7e74ee6a5893708112c546a" Name="Diagram1">
-        <EntityTypeShape EntityType="ZeusModel.Sys_Area" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_DbBackup" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_FilterIP" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_Items" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_ItemsDetail" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_Log" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_Module" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_ModuleButton" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_Organize" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_Role" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_RoleAuthorize" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_User" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.Sys_UserLogOn" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeusModel.A_CarCheck" Width="1.5" PointX="9.375" PointY="13.75" />
-        <EntityTypeShape EntityType="ZeusModel.A_Receivables" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ZeusModel.A_Drugs" Width="1.5" PointX="11.375" PointY="13.75" />
-        <EntityTypeShape EntityType="ZeusModel.A_Case" Width="1.5" PointX="13.375" PointY="13.75" />
+      <Diagram DiagramId="7e8396ced96c40d68532249230c350f8" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="ZeusModel.A_CarCheck" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.A_Case" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.A_Drugs" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.A_Receivables" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Area" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_DbBackup" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_FilterIP" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Items" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_ItemsDetail" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Log" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Module" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_ModuleButton" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Organize" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_Role" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_RoleAuthorize" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_User" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeusModel.Sys_UserLogOn" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
